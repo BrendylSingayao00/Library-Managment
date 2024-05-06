@@ -10,6 +10,7 @@
 
         </div>
         <div class="dash-content">
+
             <button type="button" class="btn btn-primary ml-4 mt-5 float-right " data-toggle="modal"
                 data-target="#exampleModal">
                 Add New Tenant
@@ -49,7 +50,7 @@
                                 {{ $domain->domain }}{{ $loop->last ? '' : ',' }}
                                 @endforeach
                             </td>
-                            <td method="post" scope="col" class="px-6 py-3 data-list">
+                            <td method="post" scope="col" class="px-6 py-3 data-list" style="display: inline;">
                                 <form action="{{ route('tenants.destroy', $tenant->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
@@ -71,10 +72,9 @@
         </div>
 
 
-        <form method="POST" action="{{ route('tenants.store') }}" enctype="multipart/form-data">
+        <!-- <form method="POST" action="{{ route('tenants.store') }}" enctype="multipart/form-data">
             @csrf
 
-            <!-- Name -->
             <div>
                 <x-input-label for="name" :value="__('Name')" />
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
@@ -82,7 +82,7 @@
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
             </div>
 
-            <!-- Email Address -->
+         
             <div class="mt-4">
                 <x-input-label for="email" :value="__('Email')" />
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
@@ -97,9 +97,9 @@
                 <x-input-error :messages="$errors->get('domain_name')" class="mt-2" />
             </div>
 
-            <!-- Generate Password -->
+            
 
-            <!-- Password -->
+            
             <div class="col-md-6">
                 <label for="password" class="form-label">Password</label>
                 <div class="input-group">
@@ -121,33 +121,7 @@
                 </div>
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
-            <!-- <div class="mt-4">
-                <label for="password" class="form-label">Password</label>
-                <div class="input-group">
-                    <input id="password" class="form-control" type="password" name="password" readonly required
-                        autocomplete="new-password" />
-                    <button type="button" class="btn btn-secondary" id="generatePassword">Generate</button>
-                </div>
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div> -->
-
-            <!-- Password -->
-            <!-- <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
-
-                <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                    autocomplete="new-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-            <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                    name="password_confirmation" required autocomplete="new-password" />
-
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div> -->
+            
 
             <div class="flex items-center justify-end mt-4">
 
@@ -157,23 +131,26 @@
                         {{ __('Create') }}
                     </x-primary-button>
                 </div>
-        </form>
+        </form> -->
     </section>
 
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
+            <!-- Change modal-dialog class to adjust width (e.g., modal-sm, modal-lg, modal-xl) -->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Tenant</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add Department</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <form method="POST" action="{{ route('tenants.store') }}" enctype="multipart/form-data">
                         @csrf
 
+                        <!-- Name -->
                         <div>
                             <x-input-label for="name" :value="__('Name')" />
                             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
@@ -181,7 +158,7 @@
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
 
-                      
+                        <!-- Email Address -->
                         <div class="mt-4">
                             <x-input-label for="email" :value="__('Email')" />
                             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
@@ -196,16 +173,31 @@
                             <x-input-error :messages="$errors->get('domain_name')" class="mt-2" />
                         </div>
 
-                     
+                        <!-- Generate Password -->
+
+                        <!-- Password -->
                         <div class="col-md-6">
                             <label for="password" class="form-label">Password</label>
                             <div class="input-group">
-                                <input id="password" class="form-control" type="password" name="password" readonly
-                                    required autocomplete="new-password" />
+                                <input id="password" class="form-control" type="text" name="password" readonly required
+                                    autocomplete="new-password" />
                                 <button type="button" class="btn btn-secondary" id="generatePassword">Generate</button>
                             </div>
                             <x-input-error :messages="$errors->get('password')" class="mt-2" />
                         </div>
+
+
+
+                        <div class="col-md-6" id="confirmPasswordWrapper" style="display: none;">
+                            <label for="password_confirmation" class="form-label">Confirm Password</label>
+                            <div class="input-group">
+                                <input id="password_confirmation" class="form-control" type="text"
+                                    name="password_confirmation" required autocomplete="new-password" />
+                                <button type="button" class="btn btn-primary" id="confirmPassword">Confirm</button>
+                            </div>
+                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                        </div>
+
 
                         <div class="flex items-center justify-end mt-4">
 
@@ -219,7 +211,8 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
+
 
     <script>
     const body = document.querySelector("body"),
@@ -255,13 +248,7 @@
         }
     })
 
-    $('#exampleModal').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var recipient = button.data('whatever') // Extract info from data-* attributes
-        var modal = $(this)
-        modal.find('.modal-title').text('New message to ' + recipient)
-        modal.find('.modal-body input').val(recipient)
-    })
+
 
 
 
