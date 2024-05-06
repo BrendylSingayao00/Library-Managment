@@ -112,7 +112,7 @@
 
 
 
-            <div class="col-md-6" id="confirmPasswordWrapper">
+            <div class="col-md-6" id="confirmPasswordWrapper" style="display: none;">
                 <label for="password_confirmation" class="form-label">Confirm Password</label>
                 <div class="input-group">
                     <input id="password_confirmation" class="form-control" type="text" name="password_confirmation"
