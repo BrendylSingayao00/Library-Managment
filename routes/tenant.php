@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 use App\Http\Controllers\App\{
-    ProfileController, 
-    UserController
+    ProfileController,
+    UserController,
+    BookController
 };
 
 
@@ -31,38 +32,33 @@ Route::middleware([
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
-    Route::get('/',function(){
-        return view('app.welcome'); 
+    Route::get('/', function () {
+        return view('app.welcome');
     });
 
     Route::get('/dashboard', function () {
         return view('app.dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
-    
+
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
 
-        
+
+        Route::resource('app.books', BookController::class);
+        Route::get('/books', [BookController::class, 'index'])->name('books.index');
+        Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
+
 
         Route::group(['middleware' => ['role:admin']], function () {
-            Route::resource('users', UserController::class); 
+            Route::resource('users', UserController::class);
         });
-
-      
     });
 
-    Route::get('/teacher', function () {
-        return view('app.teacher');
-    })->name('app.teacher'); 
-    
-    Route::get('/student', function () {
-        return view('app.student');
-    })->name('app.student'); 
-    
-    require __DIR__.'/tenant-auth.php';
-    
 
+
+
+
+    require __DIR__ . '/tenant-auth.php';
 });

@@ -13,9 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -33,9 +31,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/2.0.6/css/dataTables.dataTables.css" rel="stylesheet">
 
@@ -58,7 +54,7 @@
             <div class="logo-image">
                 <img src="images/logo.png" alt="">
             </div>
-            <span class="logo_name">CodingLab</span>
+            <span class="logo_name">EduAcademia</span>
         </div>
         <div class="menu-items">
 
@@ -73,27 +69,17 @@
                         <span class="link-name">Borrower</span>
                     </a></li>
 
+
+
                 <li><a href="">
                         <i class="uil uil-files-landscapes"></i>
                         <span class="link-name">Borrowing</span>
                     </a></li>
-
-                <li><a href="">
-                        <i class="uil uil-files-landscapes"></i>
-                        <span class="link-name">Add Books</span>
-                    </a></li>
                 @endrole
-                <li><a href="">
+                <li><a href="{{ route('books.index') }}">
                         <i class=""></i>
                         <span class="link-name">Books</span>
                     </a></li>
-
-                <li><a href="">
-                        <i class=""></i>
-                        <span class="link-name">Borrower</span>
-                    </a></li>
-
-
 
             </ul>
 
@@ -126,38 +112,38 @@
 
 </body>
 <script>
-const body = document.querySelector("body"),
-    modeToggle = body.querySelector(".mode-toggle");
-sidebar = body.querySelector("nav");
-sidebarToggle = body.querySelector(".sidebar-toggle");
+    const body = document.querySelector("body"),
+        modeToggle = body.querySelector(".mode-toggle");
+    sidebar = body.querySelector("nav");
+    sidebarToggle = body.querySelector(".sidebar-toggle");
 
-let getMode = localStorage.getItem("mode");
-if (getMode && getMode === "dark") {
-    body.classList.toggle("dark");
-}
-
-let getStatus = localStorage.getItem("status");
-if (getStatus && getStatus === "close") {
-    sidebar.classList.toggle("close");
-}
-
-modeToggle.addEventListener("click", () => {
-    body.classList.toggle("dark");
-    if (body.classList.contains("dark")) {
-        localStorage.setItem("mode", "dark");
-    } else {
-        localStorage.setItem("mode", "light");
+    let getMode = localStorage.getItem("mode");
+    if (getMode && getMode === "dark") {
+        body.classList.toggle("dark");
     }
-});
 
-sidebarToggle.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
-    if (sidebar.classList.contains("close")) {
-        localStorage.setItem("status", "close");
-    } else {
-        localStorage.setItem("status", "open");
+    let getStatus = localStorage.getItem("status");
+    if (getStatus && getStatus === "close") {
+        sidebar.classList.toggle("close");
     }
-})
+
+    modeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark");
+        if (body.classList.contains("dark")) {
+            localStorage.setItem("mode", "dark");
+        } else {
+            localStorage.setItem("mode", "light");
+        }
+    });
+
+    sidebarToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("close");
+        if (sidebar.classList.contains("close")) {
+            localStorage.setItem("status", "close");
+        } else {
+            localStorage.setItem("status", "open");
+        }
+    })
 </script>
 
 </html>
