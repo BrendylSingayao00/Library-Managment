@@ -49,10 +49,13 @@ Route::middleware([
         Route::resource('app.books', BookController::class);
         Route::get('/books', [BookController::class, 'index'])->name('books.index');
         Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
+        Route::post('/books', [BookController::class, 'store'])->name('books.store');
+
 
 
         Route::group(['middleware' => ['role:admin']], function () {
             Route::resource('users', UserController::class);
+            Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
         });
     });
 

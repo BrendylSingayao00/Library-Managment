@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('tenants', TenantController::class);
     Route::post('/tenants', [TenantController::class, 'store'])->name('tenants.store');
+    Route::get('/tenants/create', [TenantController::class, 'create'])->name('tenants.create');
 });
 
 Route::get('/csrf-cookie', function () {

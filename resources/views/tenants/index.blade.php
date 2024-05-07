@@ -10,10 +10,12 @@
 
         </div>
         <div class="dash-content">
-
-            <button type="button" class="btn btn-primary ml-4 mt-5 float-right " data-toggle="modal" data-target="#exampleModal">
+            <x-btn-link class="ml-4 float-right flex" href="{{ route('tenants.create') }}">
+                Add New Tenant</x-btn-link>
+            <!-- <button type="button" class="btn btn-primary ml-4 mt-5 float-right " data-toggle="modal"
+                data-target="#exampleModal">
                 Add New Tenant
-            </button>
+            </button> -->
 
             <div class="overview">
                 <div class="title">
@@ -71,7 +73,7 @@
         </div>
 
 
-        <form method="POST" action="{{ route('tenants.store') }}" enctype="multipart/form-data">
+        <!-- <form method="POST" action="{{ route('tenants.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div>
@@ -125,13 +127,13 @@
                         {{ __('Create') }}
                     </x-primary-button>
                 </div>
-        </form>
+        </form> -->
     </section>
 
 
 
 
-    <script>
+    <!-- <script>
         // Function to generate random password
         function generatePassword() {
             const length = 10; // Length of the generated password
@@ -161,7 +163,7 @@
             const passwordField = document.getElementById("password");
             passwordField.setAttribute("readonly", true); // Make password field readonly again
         });
-    </script>
+    </script> -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">

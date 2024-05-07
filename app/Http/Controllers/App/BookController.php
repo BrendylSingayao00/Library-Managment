@@ -14,9 +14,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        // $books = Book::all();
-        // return view('app.books.index', compact('books'));
-        return view('app.books.index');
+        $books = Book::all();
+        return view('app.books.index', compact('books'));
+        // return view('app.books.index');
+
     }
 
     /**
@@ -32,7 +33,37 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category' => 'required|string|max:255',
+            'book_cover' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust image validation as per your requirements
+        ]);
+
+        $book = new Book();
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->description = $request->description;
+        $book->category = $request->category;
+
+        // Handle file upload
+        if ($request->hasFile('book_cover')) {
+            $image = $request->file('book_cover');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+        }
+
+        // Save book data to the database
+        Book::create([
+            'title' => $request->title,
+            'author' => $request->author,
+            'description' => $request->description,
+            'category' => $request->category,
+            'book_cover' => $imageName ?? null, // Use null if no file uploaded
+        ]);
+
+        return redirect()->route('books.index');
     }
 
     /**
