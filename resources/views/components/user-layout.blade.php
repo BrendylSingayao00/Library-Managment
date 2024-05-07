@@ -61,12 +61,13 @@
             <span class="logo_name">CodingLab</span>
         </div>
         <div class="menu-items">
-            @role('admin')
+
             <ul class="nav-links">
                 <li><a href="{{ route('dashboard')}}">
                         <i class="uil uil-estate"></i>
                         <span class="link-name">Dahsboard</span>
                     </a></li>
+                @role('admin')
                 <li><a href="{{ route('users.index')}}">
                         <i class="uil uil-files-landscapes"></i>
                         <span class="link-name">Borrower</span>
@@ -83,12 +84,12 @@
                     </a></li>
                 @endrole
                 <li><a href="">
-                        <i class="uil uil-files-landscapes"></i>
+                        <i class=""></i>
                         <span class="link-name">Books</span>
                     </a></li>
 
                 <li><a href="">
-                        <i class="uil uil-files-landscapes"></i>
+                        <i class=""></i>
                         <span class="link-name">Borrower</span>
                     </a></li>
 

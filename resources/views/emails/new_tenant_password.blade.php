@@ -12,14 +12,7 @@
 
     You can use this password to login to your account.
 
-    Thanks,<br>
+    Thanks
     {{ config('app.name') }}
     @endcomponent
-
-    <x-mail::button :url="''">
-        Button Text
-    </x-mail::button>
-
-    Thanks,
-    {{ config('app.name') }}
 </x-mail::message>

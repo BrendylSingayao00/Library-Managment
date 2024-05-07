@@ -25,11 +25,6 @@
                             <thead>
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="text-gray-500">
-                                            ID
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
                                         Name
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -55,12 +50,7 @@
                                 @foreach($users as $user)
                                 @if (!$loop->first)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <!-- Add your product color here -->
-                                        <span class="text-gray-500">
-                                            2100102
-                                        </span>
-                                    </td>
+
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         {{$user->name}}
                                     </td>
