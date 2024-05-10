@@ -30,24 +30,35 @@ class BorrowController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'book_id' => 'required|exists:books,id',
-            'student_name' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'student_id' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'date_of_borrow' => 'required|date',
-            'date_of_return' => 'required|date',
+            'date_borrow' => 'required|date',
+            'date_return' => 'required|date',
         ]);
 
+        // Find the book by its ID
+        $book = Book::findOrFail($request->book_id);
+
+        // Create a new borrow record and associate it with the book
         $borrow = new Borrow();
-        $borrow->book_id = $request->book_id;
-        $borrow->student_name = $request->student_name;
-        $borrow->student_id = $request->student_id;
+        $borrow->book_id = $book->id;
+        $borrow->book_title = $book->title;
+        $borrow->author = $book->author;
+        $borrow->description = $book->description;
+        $borrow->book_cover = $book->book_cover;
+        $borrow->name = $request->name;
         $borrow->email = $request->email;
-        $borrow->date_of_borrow = $request->date_of_borrow;
-        $borrow->date_of_return = $request->date_of_return;
+        $borrow->student_id = $request->student_id;
+        $borrow->date_borrow = $request->date_borrow;
+        $borrow->date_return = $request->date_return;
         $borrow->save();
 
+
+        dd('Data saved successfully.');
         // return redirect()->route('books.index')->with('success', 'Book borrowed successfully!');
         return redirect()->route('app.borrow.library')->with('success', 'Book borrowed successfully!');
     }

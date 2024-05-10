@@ -4,13 +4,15 @@
         <h1>Borrow Book</h1>
         <form action="{{ route('borrow.store') }}" method="post">
             @csrf
+            <input type="hidden" name="book_id" value="{{ $book->id }}">
+
             <div class="form-group">
                 <label for="title">Book Title</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ $book->title }}" readonly>
             </div>
             <div class="form-group">
-                <label for="title">Book Author</label>
-                <input type="text" class="form-control" id="title" name="title" value="{{ $book->author }}" readonly>
+                <label for="author">Book Author</label>
+                <input type="text" class="form-control" id="author" name="author" value="{{ $book->author }}" readonly>
             </div>
             <div class="form-group">
                 <label for="book_cover">Book Cover</label>
