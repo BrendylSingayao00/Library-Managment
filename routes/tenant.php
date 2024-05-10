@@ -57,6 +57,7 @@ Route::middleware([
         Route::get('books/{book}/borrow', [BorrowController::class, 'borrow'])->name('books.borrow');
         Route::post('borrow/store', [BorrowController::class, 'store'])->name('borrow.store');
         Route::get('/library', [BorrowController::class, 'library'])->name('borrow.library');
+        Route::get('/borrowing', [BorrowController::class, 'borrowing'])->name('borrow.borrowing');
 
 
 

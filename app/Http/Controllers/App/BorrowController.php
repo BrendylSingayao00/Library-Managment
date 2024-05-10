@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 
 
 class BorrowController extends Controller
@@ -106,8 +107,21 @@ class BorrowController extends Controller
     {
         // Assuming 'library.blade.php' is located in 'resources/views/app/borrow' folder
         // return view('app.borrow.library');
-        $borrows = Borrow::all();
+        // $borrows = Borrow::all();
+
+        // return view('app.borrow.library', compact('borrows'));
+        $userName = Auth::user()->name;
+
+        // Fetch borrow records where the name matches the current user's name
+        $borrows = Borrow::where('name', $userName)->get();
 
         return view('app.borrow.library', compact('borrows'));
+    }
+
+    public function borrowing()
+    {
+        $borrows = Borrow::all();
+
+        return view('app.borrow.borrowing', compact('borrows'));
     }
 }

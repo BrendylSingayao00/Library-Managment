@@ -71,8 +71,8 @@
 
 
 
-                <li><a href="">
-                        <i class="uil uil-files-landscapes"></i>
+                <li><a href="{{ route('borrow.borrowing') }}">
+                        <i class=" uil uil-files-landscapes"></i>
                         <span class="link-name">Borrowing</span>
                     </a></li>
                 @endrole

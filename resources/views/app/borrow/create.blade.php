@@ -29,21 +29,22 @@
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="3"
-                    readonly>{{ $book->description }}</textarea>
+                <textarea class="form-control" id="description" name="description" rows="3" readonly>{{ $book->description }}</textarea>
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
-                <input type="text" class="form-control" id="category" name="category" value="{{ $book->category }}"
-                    readonly>
+                <input type="text" class="form-control" id="category" name="category" value="{{ $book->category }}" readonly>
             </div>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <!-- <input type="text" class="form-control" id="name" name="name" required> -->
+                <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}" readonly>
+
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <!-- <input type="email" class="form-control" id="email" name="email" required> -->
+                <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly>
             </div>
             <div class="form-group">
                 <label for="student_id">Student ID</label>
