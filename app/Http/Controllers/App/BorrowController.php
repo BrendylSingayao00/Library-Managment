@@ -6,7 +6,8 @@ use App\Models\Borrow;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
-
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 
 
 class BorrowController extends Controller
@@ -16,6 +17,8 @@ class BorrowController extends Controller
      */
     public function index()
     {
+        $borrows = Borrow::all(); // Fetch all borrow records
+        return view('app.borrow.library', compact('borrows'));
     }
 
     /**
@@ -57,11 +60,11 @@ class BorrowController extends Controller
         $borrow->date_return = $request->date_return;
         $borrow->save();
 
-
-        dd('Data saved successfully.');
-        // return redirect()->route('books.index')->with('success', 'Book borrowed successfully!');
-        return redirect()->route('app.borrow.library')->with('success', 'Book borrowed successfully!');
+        // return view('app.borrow.library')->with('success', 'Book borrowed successfully!');
+        return redirect()->route('borrow.library')->with('success', 'Book borrowed successfully!');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -97,5 +100,14 @@ class BorrowController extends Controller
     public function borrow(Book $book)
     {
         return view('app.borrow.create', compact('book'));
+    }
+
+    public function library()
+    {
+        // Assuming 'library.blade.php' is located in 'resources/views/app/borrow' folder
+        // return view('app.borrow.library');
+        $borrows = Borrow::all();
+
+        return view('app.borrow.library', compact('borrows'));
     }
 }

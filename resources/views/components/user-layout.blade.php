@@ -76,11 +76,17 @@
                         <span class="link-name">Borrowing</span>
                     </a></li>
                 @endrole
+
                 <li><a href="{{ route('books.index') }}">
                         <i class=""></i>
                         <span class="link-name">Books</span>
                     </a></li>
-
+                @role('student')
+                <li><a href="{{ route('borrow.library') }}">
+                        <i class=""></i>
+                        <span class="link-name">My Library</span>
+                    </a></li>
+                @endrole
             </ul>
 
             <ul class="logout-mode">
