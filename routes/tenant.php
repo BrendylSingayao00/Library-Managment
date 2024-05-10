@@ -8,7 +8,8 @@ use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 use App\Http\Controllers\App\{
     ProfileController,
     UserController,
-    BookController
+    BookController,
+    BorrowController
 };
 
 
@@ -53,7 +54,8 @@ Route::middleware([
         Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
         Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy');
 
-
+        Route::get('books/{book}/borrow', [BorrowController::class, 'borrow'])->name('books.borrow');
+        Route::post('borrow/store', [BorrowController::class, 'store'])->name('borrow.store');
 
         Route::group(['middleware' => ['role:admin']], function () {
             Route::resource('users', UserController::class);

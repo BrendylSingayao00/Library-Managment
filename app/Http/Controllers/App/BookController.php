@@ -26,10 +26,16 @@ class BookController extends Controller
     public function create()
     {
         // return view('app.books.create');
+        // $latestBook = Book::latest()->first();
+        // $nextBookId = $latestBook ? $latestBook->book_id + 1 : 1;
+
+        // return view('app.books.create', compact('nextBookId'));
+
         $latestBook = Book::latest()->first();
         $nextBookId = $latestBook ? $latestBook->book_id + 1 : 1;
+        $books = Book::all(); // Get all books to pass to the borrow form
 
-        return view('app.books.create', compact('nextBookId'));
+        return view('app.books.create', compact('nextBookId', 'books'));
     }
 
     /**
@@ -77,7 +83,8 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        // Pass only the selected book to the view
+        return view('app.books.index', compact('book'));
     }
 
     /**
