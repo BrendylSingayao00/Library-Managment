@@ -48,7 +48,8 @@ class BorrowController extends Controller
         $borrow->date_of_return = $request->date_of_return;
         $borrow->save();
 
-        return redirect()->route('books.index')->with('success', 'Book borrowed successfully!');
+        // return redirect()->route('books.index')->with('success', 'Book borrowed successfully!');
+        return redirect()->route('app.borrow.library')->with('success', 'Book borrowed successfully!');
     }
 
     /**

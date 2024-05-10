@@ -58,11 +58,13 @@
         </div>
     </div>
 
+    @foreach($books as $book)
     <!-- Detail Modal -->
     <div id="bookDetailsModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="bookDetailsContent">
+
                 <h4>{{ $book->title }}</h4>
                 <p>{{ $book->description }}</p>
             </div>
@@ -80,14 +82,16 @@
                 </form>
             </div>
             @endrole
+            @role('student')
             <form action="{{ route('books.borrow', $book->id) }}" method="get">
                 @csrf
                 <button type="submit" class="btn btn-primary">Borrow</button>
             </form>
+            @endrole
         </div>
     </div>
     </div>
-
+    @endforeach
 
 
 
