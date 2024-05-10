@@ -25,7 +25,11 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('app.books.create');
+        // return view('app.books.create');
+        $latestBook = Book::latest()->first();
+        $nextBookId = $latestBook ? $latestBook->book_id + 1 : 1;
+
+        return view('app.books.create', compact('nextBookId'));
     }
 
     /**
@@ -46,6 +50,8 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->description = $request->description;
         $book->category = $request->category;
+
+
 
         // Handle file upload
         if ($request->hasFile('book_cover')) {
@@ -77,9 +83,24 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Book $book)
+    // public function edit(Request $request)
+    // {
+    //     $book = Book::findOrFail($request->book_id);
+
+    //     // Implement your edit logic here
+
+    //     return redirect()->back()->with('success', 'Book edited successfully!');
+    // }
+    // Function to edit book
+    public function edit(Request $request)
     {
-        //
+        $book = Book::findOrFail($request->book_id);
+        // Update book details
+        $book->update([
+            // Update fields as required
+        ]);
+
+        return redirect()->back()->with('success', 'Book edited successfully!');
     }
 
     /**
@@ -93,8 +114,17 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Book $book)
+    // public function destroy(Book $book)
+    // {
+    //     //
+    // }
+    // Delete book
+    public function destroy($id)
     {
-        //
+        // You can implement your logic to delete the book here
+        $book = Book::findOrFail($id);
+        $book->delete();
+
+        return redirect()->back()->with('success', 'Book deleted successfully!');
     }
 }

@@ -14,9 +14,7 @@
                 <textarea id="description" class="form-control" placeholder="Description.." style="height:180px"
                     name="description" required></textarea>
                 <ul>
-                    <label for="book_id">Book ID</label>
-                    <input type="number" class="form-control" id="book_id" placeholder="Book ID.." min="1" required
-                        name="book_id" disabled>
+
                     <label for="book_id">Book Cover</label>
                     <input type="file" class="form-control" id="bookCover" name="book_cover" required>
                     <label for="book_id">Category</label>
