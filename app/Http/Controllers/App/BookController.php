@@ -52,6 +52,17 @@ class BookController extends Controller
             'quantity' => 'required|integer|min:1',
         ]);
 
+        // Check if the book already exists
+        $existingBook = Book::where('title', $request->title)
+            ->where('author', $request->author)
+            ->where('category', $request->category)
+            ->exists();
+
+        if ($existingBook) {
+            return redirect()->back()->withErrors(['error' => 'The book already exists.']);
+        }
+
+
         $book = new Book();
         $book->title = $request->title;
         $book->author = $request->author;

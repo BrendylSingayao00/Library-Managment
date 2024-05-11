@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\ValidationException;
 
 
 class BorrowController extends Controller
@@ -44,6 +45,30 @@ class BorrowController extends Controller
             'date_borrow' => 'required|date',
             'date_return' => 'required|date',
         ]);
+
+        // Check if there is an existing pending borrow request for the same book
+        $existingPendingBorrow = Borrow::where('book_id', $request->book_id)
+            ->where('name', $request->name)
+            ->where('email', $request->email)
+            ->where('status', 'pending')
+            ->exists();
+
+        if ($existingPendingBorrow) {
+            throw ValidationException::withMessages(['book_id' => 'You have a pending borrow request for this book.']);
+        }
+
+        // Check if the user already borrowed the same book and the status is not completed
+        $existingBorrow = Borrow::where('book_id', $request->book_id)
+            ->where('name', $request->name)
+            ->where('email', $request->email)
+            ->where('status', '!=', 'completed')
+            ->exists();
+
+        if ($existingBorrow) {
+            throw ValidationException::withMessages(['book_id' => 'You have already borrowed this book.']);
+        }
+
+
 
         // Find the book by its ID
         $book = Book::findOrFail($request->book_id);
