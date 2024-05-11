@@ -4,28 +4,18 @@
         {{ session('success') }}
     </div>
     @endif
-    <div class="dash-content">
-        <div class="search-bar">
-            <i class="uil uil-bars sidebar-toggle"></i>
-            <div class="search-box">
-                <i class="uil uil-search"></i>
-                <form action="{{ route('books.search') }}" method="GET">
-                    <div class="search-box">
-                        <i class="uil uil-search"></i>
-                        <input type="text" placeholder="Search here..." name="search">
-                        <button type="submit">Search</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="overview">
-            <div class="title">
-                <i class="uil uil-tachometer-fast-alt"></i>
-                <span class="text">Book</span>
+    <div class="container">
+        <div>
+            <h1>Books</h1>
+            <hr>
+            <div class="search-bar mb-3">
+                <input type="text" id="search" placeholder="Search...">
+                <button type="button" id="searchBtn">Search</button>
             </div>
             @role('admin')
             <div>
-                <x-btn-link class="ml-4 float-right flex" href="{{ route('books.create') }}">
+
+                <x-btn-link class="ml-4 float-right flex mb-3" href="{{ route('books.create') }}">
                     Add Book</x-btn-link>
             </div>
             @endrole
@@ -122,6 +112,27 @@
                 description + '</p>';
             modal.style.display = "block";
         });
+    });
+
+    // Search function
+    document.getElementById("search").addEventListener("input", function() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = this;
+        filter = input.value.toUpperCase();
+        table = document.querySelector(".book-table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByClassName("book-details")[0];
+            if (td) {
+                txtValue = td.innerText.toUpperCase();
+                if (txtValue.indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
     });
     </script>
 </x-user-layout>
