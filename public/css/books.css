@@ -198,3 +198,60 @@ h1 {
 .search-bar {
     margin-top: -20px;
 }
+/* Header styles */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    margin: 0;
+    font-size: 24px;
+    left: 50px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    left: 600px;
+    width: 300px; /* Adjust the width as needed */
+    height: 50px;
+}
+
+
+.search-input {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 70px;
+}
+
+.search-button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #45a049;
+}
+/* CSS */
+.btn-link {
+    padding: 8px 12px; /* Adjust padding as needed */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    float: left; /* Align button to the left */
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}

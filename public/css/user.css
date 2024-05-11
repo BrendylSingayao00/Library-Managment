@@ -3,3 +3,65 @@
     width: 1000px;
 
 }
+/* Header styles */
+.top {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.top .sidebar-toggle {
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+.search-box input[type="text"] {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+.dash-content {
+    padding: 20px;
+}
+
+.overview {
+    margin-top: 20px;
+}
+
+.user_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user_table th,
+.user_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.user_table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.float-right {
+    float: right;
+}

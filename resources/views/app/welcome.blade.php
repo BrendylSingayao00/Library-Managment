@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>EduAcademia </title>
     <link href="css/welcome.css" rel="stylesheet">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -37,7 +37,7 @@
         <!-- ==== NAVBAR ==== -->
         <nav class="nav">
             <div class="logo">
-                <h2>Devkit.</h2>
+                <h2>EduAcademia</h2>
             </div>
 
             <div class="nav_menu" id="nav_menu">
@@ -59,7 +59,7 @@
                         @endif
                     </li> -->
                     <li class="nav_menu_item">
-                        <a href="#" class="nav_menu_link">contact</a>
+                        <!-- <a href="#" class="nav_menu_link">contact</a> -->
                     </li>
                 </ul>
             </div>
@@ -75,9 +75,9 @@
             <div class="grid-cols-2">
                 <div class="grid-item-1">
                     <h1 class="main-heading">
-                        Welcome to <span>Devkit.</span>
-                        <br />
-                        Develop anything.
+                        Welcome to <span><strong>EduAcademia</strong></span>
+                        <!-- <br />
+                        Develop anything. -->
                     </h1>
                     <p class="info-text">
                         Build a beautiful, modern website with flexible components built

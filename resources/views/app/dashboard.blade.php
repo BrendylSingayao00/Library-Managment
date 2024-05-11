@@ -11,7 +11,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>SB Admin 2 - Dashboard</title>
+        <title>EduAcademia | Dashboard</title>
 
         <!-- Custom fonts for this template-->
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -37,86 +37,93 @@
             <div class="dash-content">
                 <div class="overview">
                     <div class="title">
-                        <i class="uil uil-tachometer-fast-alt"></i>
                         <span class="text">Dashboard</span>
                     </div>
                     <div class="boxes">
                         <div class="box box1">
-                            <i class="uil uil-thumbs-up"></i>
                             <span class="text">Total Book</span>
                             <span class="number">50,120</span>
                         </div>
                         <div class="box box2">
-                            <i class="uil uil-comments"></i>
                             <span class="text">Available Books</span>
                             <span class="number">20,120</span>
                         </div>
                         <div class="box box3">
-                            <i class="uil uil-share"></i>
                             <span class="text">New Books</span>
                             <span class="number">10,120</span>
                         </div>
                     </div>
                 </div>
                 <div class="activity">
-                    <div class="title">
-                        <i class="uil uil-clock-three"></i>
-                        <span class="text">Recent Books</span>
-                    </div>
-                    <div class="activity-data">
-                        <div class="data names">
-                            <span class="data-title">Name</span>
-                            <span class="data-list">Prem Shahi</span>
-                            <span class="data-list">Deepa Chand</span>
-                            <span class="data-list">Manisha Chand</span>
-                            <span class="data-list">Pratima Shahi</span>
-                            <span class="data-list">Man Shahi</span>
-                            <span class="data-list">Ganesh Chand</span>
-                            <span class="data-list">Bikash Chand</span>
-                        </div>
-                        <div class="data email">
-                            <span class="data-title">Email</span>
-                            <span class="data-list">premshahi@gmail.com</span>
-                            <span class="data-list">deepachand@gmail.com</span>
-                            <span class="data-list">prakashhai@gmail.com</span>
-                            <span class="data-list">manishachand@gmail.com</span>
-                            <span class="data-list">pratimashhai@gmail.com</span>
-                            <span class="data-list">manshahi@gmail.com</span>
-                            <span class="data-list">ganeshchand@gmail.com</span>
-                        </div>
-                        <div class="data joined">
-                            <span class="data-title">Joined</span>
-                            <span class="data-list">2022-02-12</span>
-                            <span class="data-list">2022-02-12</span>
-                            <span class="data-list">2022-02-13</span>
-                            <span class="data-list">2022-02-13</span>
-                            <span class="data-list">2022-02-14</span>
-                            <span class="data-list">2022-02-14</span>
-                            <span class="data-list">2022-02-15</span>
-                        </div>
-                        <div class="data type">
-                            <span class="data-title">Type</span>
-                            <span class="data-list">New</span>
-                            <span class="data-list">Member</span>
-                            <span class="data-list">Member</span>
-                            <span class="data-list">New</span>
-                            <span class="data-list">Member</span>
-                            <span class="data-list">New</span>
-                            <span class="data-list">Member</span>
-                        </div>
-                        <div class="data status">
-                            <span class="data-title">Status</span>
-                            <span class="data-list">Liked</span>
-                            <span class="data-list">Liked</span>
-                            <span class="data-list">Liked</span>
-                            <span class="data-list">Liked</span>
-                            <span class="data-list">Liked</span>
-                            <span class="data-list">Liked</span>
-                            <span class="data-list">Liked</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="title">
+        <span class="text">Recent Books</span>
+    </div>
+    <div class="activity-data">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Joined</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Prem Shahi</td>
+                    <td>premshahi@gmail.com</td>
+                    <td>2022-02-12</td>
+                    <td>New</td>
+                    <td>Liked</td>
+                </tr>
+                <tr>
+                    <td>Deepa Chand</td>
+                    <td>deepachand@gmail.com</td>
+                    <td>2022-02-12</td>
+                    <td>Member</td>
+                    <td>Liked</td>
+                </tr>
+                <tr>
+                    <td>Manisha Chand</td>
+                    <td>prakashhai@gmail.com</td>
+                    <td>2022-02-13</td>
+                    <td>Member</td>
+                    <td>Liked</td>
+                </tr>
+                <tr>
+                    <td>Pratima Shahi</td>
+                    <td>manishachand@gmail.com</td>
+                    <td>2022-02-13</td>
+                    <td>New</td>
+                    <td>Liked</td>
+                </tr>
+                <tr>
+                    <td>Man Shahi</td>
+                    <td>pratimashhai@gmail.com</td>
+                    <td>2022-02-14</td>
+                    <td>Member</td>
+                    <td>Liked</td>
+                </tr>
+                <tr>
+                    <td>Ganesh Chand</td>
+                    <td>manshahi@gmail.com</td>
+                    <td>2022-02-14</td>
+                    <td>New</td>
+                    <td>Liked</td>
+                </tr>
+                <tr>
+                    <td>Bikash Chand</td>
+                    <td>ganeshchand@gmail.com</td>
+                    <td>2022-02-15</td>
+                    <td>Member</td>
+                    <td>Liked</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
         </section>
 
     </body>
