@@ -1,5 +1,14 @@
 <x-user-layout>
     <div>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <form action="{{ route('books.store') }}" method="POST" class="form" enctype="multipart/form-data">
             @csrf
             <label for="title" id="title-author">Title</label>
@@ -31,13 +40,16 @@
                         <option>Sports</option>
                         <option>Technology</option>
                     </select>
+                    <!-- Add book quantity -->
+                    <label for="quantity">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required>
                 </ul>
             </div>
 
             <div id="row-3" class="d-flex justify-content-between">
                 <input type="submit" value="ADD BOOK" class="btn btn-success flex-grow-1 me-1" id="add-btn"
                     name="submit">
-                <button type="button" class="btn btn-secondary flex-grow-1 ms-1" data-bs-dismiss="modal">CANCEL</button>
+                <a href="{{ route('books.index') }}" class="btn btn-secondary flex-grow-1 ms-1">CANCEL</a>
             </div>
         </form>
     </div>

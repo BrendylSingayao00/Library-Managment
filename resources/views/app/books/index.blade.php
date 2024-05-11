@@ -1,23 +1,26 @@
 <x-user-layout>
-    <header class="header">
-        <h1 class="title">BOOKS</h1>
-        <div class="search-box">
-            <input type="text" class="search-input" placeholder="Search...">
+    <div class="dash-content">
+        <div class="search-bar">
+            <i class="uil uil-bars sidebar-toggle"></i>
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
         </div>
-    </header>
         <div class="overview">
-           
+            <div class="title">
+                <i class="uil uil-tachometer-fast-alt"></i>
+                <span class="text">Book</span>
+            </div>
             @role('admin')
             <div>
-              <x-btn-link class="ml-4 float-right flex" href="{{ route('books.create') }}">
-                     Add Book
-             </x-btn-link>
-                </div>
+                <x-btn-link class="ml-4 float-right flex" href="{{ route('books.create') }}">
+                    Add Book</x-btn-link>
+            </div>
             @endrole
             <div>
 
-                <div class="booklist-container container-sm" id="booklist-panel" data-booklist
-                    style="overflow-y: scroll; max-height: 400px;">
+                <div class="booklist-container container-sm" id="booklist-panel" data-booklist>
                     <table class="book-table">
                         <tr>
                             @foreach($books as $book)
@@ -26,23 +29,21 @@
                                         class="book-cover-item">
                                     <br>
                                     <p>{{ $book->category }}</p>
-                                    <strong>{{ $book->title }}</strong><br>
-                                    <b>{{ $book->author }}</b><br>
-                                    <div>
-                                        <div class="small-ratings">
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                        </div>
-                                        <!-- <button type="button" class="btn btn-success"
+                                    <strong>{{ substr($book->title, 0, 20) }}</strong><br>
+                                    <b>{{ substr($book->author, 0, 20) }}</b><br>
+                                    Book Copy:
+                                    @if($book->quantity == 0)
+                                    <b>The book is not available right now</b>
+                                    @else
+                                    <b>{{ $book->quantity }}</b>
+                                    @endif
+                                    <!-- <button type="button" class="btn btn-success"
                                             id="detailsButton">Details</button> -->
-                                        <button type="button" class="btn btn-success detailsButton"
-                                            data-title="{{ $book->title }}"
-                                            data-description="{{ $book->description }}">Details</button>
+                                    <button type="button" class="btn btn-success detailsButton"
+                                        data-title="{{ $book->title }}"
+                                        data-description="{{ $book->description }}">Details</button>
 
-                                    </div>
+
                                 </div>
                             </td>
                             @endforeach
@@ -71,10 +72,11 @@
                     @csrf
                     <button type="submit" class="btn btn-success">Edit</button>
                 </form>
-                <form id="deleteForm" action="{{ route('books.destroy', $book->id) }}" method="POST">
+                <form action="{{ route('books.destroy', $book->id) }}" method="post" id="deleteForm">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    <button type="submit" class="btn btn-danger"
+                        onclick="return confirm('Are you sure you want to delete this book?')">Delete</button>
                 </form>
             </div>
             @endrole
@@ -109,6 +111,27 @@
                 description + '</p>';
             modal.style.display = "block";
         });
+    });
+
+    // Search function
+    document.getElementById("search").addEventListener("input", function() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = this;
+        filter = input.value.toUpperCase();
+        table = document.querySelector(".book-table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByClassName("book-details")[0];
+            if (td) {
+                txtValue = td.innerText.toUpperCase();
+                if (txtValue.indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
     });
     </script>
 </x-user-layout>

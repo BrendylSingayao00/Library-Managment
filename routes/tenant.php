@@ -48,18 +48,35 @@ Route::middleware([
 
 
         Route::resource('app.books', BookController::class);
+        Route::resource('books', BookController::class);
         Route::get('/books', [BookController::class, 'index'])->name('books.index');
         Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
         Route::post('/books', [BookController::class, 'store'])->name('books.store');
         Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
         Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy');
+        Route::get('/books/search', [BookController::class, 'search'])->name('books.search');
 
         Route::get('books/{book}/borrow', [BorrowController::class, 'borrow'])->name('books.borrow');
         Route::post('borrow/store', [BorrowController::class, 'store'])->name('borrow.store');
+        Route::get('/library', [BorrowController::class, 'library'])->name('borrow.library');
+        Route::get('/borrowing', [BorrowController::class, 'borrowing'])->name('borrow.borrowing');
+        Route::delete('/borrow/{borrow}', [BorrowController::class, 'cancel'])->name('borrow.cancel');
+
+        Route::get('/borrow/{borrow}/edit', [BorrowController::class, 'edit'])->name('borrow.edit');
+        Route::put('/borrow/{borrow}', [BorrowController::class, 'update'])->name('borrow.update');
+        Route::delete('/borrow/{borrow}', [BorrowController::class, 'destroy'])->name('borrow.destroy');
+
+        Route::post('borrow/{borrow}/approve', [BorrowController::class, 'approve'])->name('borrow.approve');
+        Route::post('borrow/{borrow}/complete', [BorrowController::class, 'complete'])->name('borrow.complete');
+
+
+
 
         Route::group(['middleware' => ['role:admin']], function () {
             Route::resource('users', UserController::class);
+            Route::get('/users', [UserController::class, 'index'])->name('users.index');
             Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+            Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         });
     });
 

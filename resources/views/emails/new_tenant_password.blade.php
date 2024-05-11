@@ -6,9 +6,9 @@
 
     We're excited to have you as a new tenant. Here's your account information:
 
-    - **Name:** {{ $tenant->name }}
-    - **Email:** {{ $tenant->email }}
-    - **Password:** {{ $password }}
+    - Name: {{ $tenant->name }}
+    - Email: {{ $tenant->email }}
+    - Password: {{ $password }}
 
     You can use this password to login to your account.
 

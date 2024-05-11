@@ -32,12 +32,12 @@
                                         </span>
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    <!-- <td class="px-6 py-4 whitespace-nowrap">
                                         <span class="text-gray-500">
                                             Role
 
                                         </span>
-                                    </td>
+                                    </td> -->
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span class="text-gray-900">
                                             Action
@@ -60,21 +60,28 @@
                                         </span>
                                     </td>
 
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <!-- Add your product category here -->
+                                    <!-- <td class="px-6 py-4 whitespace-nowrap">
                                         <span class="text-gray-500">
                                             @foreach($user->roles as $role)
                                             {{ $role->name }}{{ $loop->last ? '':',' }}
                                             @endforeach
 
                                         </span>
-                                    </td>
+                                    </td> -->
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <!-- Add your product price here -->
                                         <span class="text-gray-900">
                                             <x-btn-link href="{{ route('users.edit',$user->id)}}">Edit
                                             </x-btn-link>
                                         </span>
+
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Are you sure you want to delete {{$user->name}}?')" class="btn-danger">
+                                                Delete
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endif

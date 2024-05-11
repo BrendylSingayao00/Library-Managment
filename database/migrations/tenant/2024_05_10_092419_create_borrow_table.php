@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('student_id');
             $table->date('date_borrow');
             $table->date('date_return');
+            $table->enum('status', ['pending', 'approved', 'completed'])->default('pending');
             $table->timestamps();
         });
     }

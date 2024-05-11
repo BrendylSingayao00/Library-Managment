@@ -2,9 +2,19 @@
 
     <div class="container">
         <h1>Borrow Book</h1>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <form action="{{ route('borrow.store') }}" method="post">
             @csrf
             <input type="hidden" name="book_id" value="{{ $book->id }}">
+            <input type="hidden" name="status" value="pending">
 
             <div class="form-group">
                 <label for="title">Book Title</label>
@@ -28,11 +38,14 @@
             </div>
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <!-- <input type="text" class="form-control" id="name" name="name" required> -->
+                <input type="text" class="form-control" id="name" name="name" value="{{ Auth::user()->name }}" readonly>
+
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <!-- <input type="email" class="form-control" id="email" name="email" required> -->
+                <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->email }}" readonly>
             </div>
             <div class="form-group">
                 <label for="student_id">Student ID</label>
@@ -44,12 +57,7 @@
             </div>
             <div class="form-group">
                 <label for="date_return">Return Date</label>
-                <select class="form-control" id="date_return" name="date_return" required>
-                    <option value="5">5 days after borrow</option>
-                    <option value="10">10 days after borrow</option>
-                    <option value="15">15 days after borrow</option>
-                    <option value="30">1 month after borrow</option>
-                </select>
+                <input type="date" class="form-control" id="date_return" name="date_return" required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

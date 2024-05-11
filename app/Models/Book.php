@@ -15,5 +15,6 @@ class Book extends Model
         'description',
         'category',
         'book_cover',
+        'quantity',
     ];
 }

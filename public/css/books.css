@@ -20,18 +20,38 @@
 }
 
 .book-table {
-    table-layout: fixed;
-    width: 100%;
+    width: 1000px;
+    border-collapse: collapse;
+    height: auto;
+
+}
+
+.book-details {
+    width: 250px;
+    height: 350px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+}
+
+.book-cover-item {
+    max-width: 100px;
+    height: 130px;
+    align-items: center;
+    margin-bottom: 3px;
+    margin: 0 auto;
 }
 
 .booklist-container {
     overflow-x: hidden;
     overflow-y: scroll;
-    resize: both;
+    /* resize: both; */
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 20px;
-    width: 1050px;
+    width: 1000px;
     height: auto;
     /* max-width: 100%; */
     /* Added to prevent horizontal overflow */
@@ -45,11 +65,11 @@
     width: 100%;
 } */
 
-.book-cover-item {
+/* .book-cover-item {
     height: 100px;
     width: 70px;
 
-}
+} */
 
 :root[data-theme="light"] {
     --page-bg: rgb(247, 238, 229);

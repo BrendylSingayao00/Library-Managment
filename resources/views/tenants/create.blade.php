@@ -32,7 +32,7 @@
                 <div class="col-md-6">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
-                        <input id="password" class="form-control" type="text" name="password" readonly required
+                        <input id="password" class="form-control" type="password" name="password" readonly required
                             autocomplete="new-password" />
                         <button type="button" class="btn btn-secondary" id="generatePassword">Generate</button>
                     </div>
