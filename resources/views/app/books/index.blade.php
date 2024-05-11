@@ -9,7 +9,13 @@
             <i class="uil uil-bars sidebar-toggle"></i>
             <div class="search-box">
                 <i class="uil uil-search"></i>
-                <input type="text" placeholder="Search here...">
+                <form action="{{ route('books.search') }}" method="GET">
+                    <div class="search-box">
+                        <i class="uil uil-search"></i>
+                        <input type="text" placeholder="Search here..." name="search">
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
             </div>
         </div>
         <div class="overview">
@@ -25,8 +31,7 @@
             @endrole
             <div>
 
-                <div class="booklist-container container-sm" id="booklist-panel" data-booklist
-                    style="overflow-y: scroll; max-height: 400px;">
+                <div class="booklist-container container-sm" id="booklist-panel" data-booklist>
                     <table class="book-table">
                         <tr>
                             @foreach($books as $book)
@@ -35,8 +40,8 @@
                                         class="book-cover-item">
                                     <br>
                                     <p>{{ $book->category }}</p>
-                                    <strong>{{ $book->title }}</strong><br>
-                                    <b>{{ $book->author }}</b><br>
+                                    <strong>{{ substr($book->title, 0, 20) }}</strong><br>
+                                    <b>{{ substr($book->author, 0, 20) }}</b><br>
                                     Book Copy:
                                     @if($book->quantity == 0)
                                     <b>The book is not available right now</b>

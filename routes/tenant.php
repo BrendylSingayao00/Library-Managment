@@ -54,6 +54,7 @@ Route::middleware([
         Route::post('/books', [BookController::class, 'store'])->name('books.store');
         Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
         Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy');
+        Route::get('/books/search', [BookController::class, 'search'])->name('books.search');
 
         Route::get('books/{book}/borrow', [BorrowController::class, 'borrow'])->name('books.borrow');
         Route::post('borrow/store', [BorrowController::class, 'store'])->name('borrow.store');
