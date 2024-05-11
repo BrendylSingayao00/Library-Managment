@@ -86,17 +86,19 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        // dd($request->all());
         $ValidatedData = $request->validate([
+
 
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'roles' => 'required|array',
+
         ]);
 
 
         $user->update($ValidatedData);
-        $user->roles()->sync($request->input('roles'));
-        return redirect()->route('users.index');
+
+        return redirect()->route('users.index')->with('success', 'User updated successfully!');
     }
 
     /**
@@ -106,6 +108,6 @@ class UserController extends Controller
     {
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('app.users.index')->with('success', 'User deleted successfully.');
     }
 }

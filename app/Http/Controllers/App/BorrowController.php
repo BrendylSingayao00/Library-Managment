@@ -48,6 +48,11 @@ class BorrowController extends Controller
         // Find the book by its ID
         $book = Book::findOrFail($request->book_id);
 
+        // Check if the requested quantity is available
+        if ($book->quantity <= 0) {
+            return redirect()->back()->with('error', 'The book is not available for borrowing.');
+        }
+
         // Create a new borrow record and associate it with the book
         $borrow = new Borrow();
         $borrow->book_id = $book->id;
@@ -60,7 +65,12 @@ class BorrowController extends Controller
         $borrow->student_id = $request->student_id;
         $borrow->date_borrow = $request->date_borrow;
         $borrow->date_return = $request->date_return;
+        $borrow->status = 'pending';
         $borrow->save();
+
+        // Update the book quantity
+        $book->quantity -= 1;
+        $book->save();
 
         // return view('app.borrow.library')->with('success', 'Book borrowed successfully!');
         return redirect()->route('borrow.library')->with('success', 'Book borrowed successfully!');
@@ -90,9 +100,19 @@ class BorrowController extends Controller
         $request->validate([
             'date_borrow' => 'required|date',
             'date_return' => 'required|date|after:date_borrow',
+            'status' => 'required|in:pending,approved,completed',
+
         ]);
 
-        $borrow->update($request->only('date_borrow', 'date_return'));
+        $borrow->update($request->only('date_borrow', 'date_return', 'status'));
+
+        // Check if the status is changing to "completed"
+        if ($request->status == 'completed' && $borrow->status != 'completed') {
+            // Update the book quantity when the borrow status changes to "completed"
+            $book = Book::findOrFail($borrow->book_id);
+            $book->quantity += 1; // Increment book quantity by 1
+            $book->save();
+        }
 
         return response()->json(['message' => 'Borrow updated successfully']);
     }
@@ -102,9 +122,14 @@ class BorrowController extends Controller
      */
     public function destroy(Borrow $borrow)
     {
+        // Update the book quantity when a borrow is deleted
+        $book = Book::findOrFail($borrow->book_id);
+        $book->quantity += 1;
+        $book->save();
+
         $borrow->delete();
 
-        return redirect()->route('app.borrow.library')->with('success', 'Borrow deleted successfully');
+        return redirect()->route('borrow.library')->with('success', 'Borrow deleted successfully');
     }
 
     public function borrow(Book $book)
@@ -152,6 +177,12 @@ class BorrowController extends Controller
     {
         $borrow->status = 'completed';
         $borrow->save();
+
+        // If the status is "completed", increment the book quantity by 1
+        if ($borrow->status === 'completed') {
+            $book = Book::findOrFail($borrow->book_id);
+            $book->increment('quantity');
+        }
 
         return redirect()->back()->with('success', 'Borrow request completed successfully!');
     }

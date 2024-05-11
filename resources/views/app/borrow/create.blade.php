@@ -14,6 +14,7 @@
         <form action="{{ route('borrow.store') }}" method="post">
             @csrf
             <input type="hidden" name="book_id" value="{{ $book->id }}">
+            <input type="hidden" name="status" value="pending">
 
             <div class="form-group">
                 <label for="title">Book Title</label>

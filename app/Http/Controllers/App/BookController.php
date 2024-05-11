@@ -102,23 +102,40 @@ class BookController extends Controller
     //     return redirect()->back()->with('success', 'Book edited successfully!');
     // }
     // Function to edit book
-    public function edit(Request $request)
+    public function edit(Book $book)
     {
-        $book = Book::findOrFail($request->book_id);
-        // Update book details
-        $book->update([
-            // Update fields as required
-        ]);
-
-        return redirect()->back()->with('success', 'Book edited successfully!');
+        return view('app.books.edit', compact('book'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Book $book)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'author' => 'required|string|max:255',
+            'description' => 'required|string',
+            'quantity' => 'required|integer|min:1',
+            'book_cover' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust image validation as per your requirements
+        ]);
+
+        $book->update([
+            'title' => $request->title,
+            'author' => $request->author,
+            'description' => $request->description,
+            'quantity' => $request->quantity,
+        ]);
+
+        // Handle file upload
+        if ($request->hasFile('book_cover')) {
+            $image = $request->file('book_cover');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+
+            $book->update([
+                'book_cover' => $imageName,
+            ]);
+        }
+
+        return redirect()->route('books.index')->with('success', 'Book edited successfully!');
     }
 
     /**

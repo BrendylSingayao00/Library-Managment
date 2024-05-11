@@ -1,4 +1,9 @@
 <x-user-layout>
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
     <div class="dash-content">
         <div class="search-bar">
             <i class="uil uil-bars sidebar-toggle"></i>
@@ -32,21 +37,19 @@
                                     <p>{{ $book->category }}</p>
                                     <strong>{{ $book->title }}</strong><br>
                                     <b>{{ $book->author }}</b><br>
-                                    <div>
-                                        <div class="small-ratings">
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                            <i class="fa fa-star rating-color"></i>
-                                        </div>
-                                        <!-- <button type="button" class="btn btn-success"
+                                    Book Copy:
+                                    @if($book->quantity == 0)
+                                    <b>The book is not available right now</b>
+                                    @else
+                                    <b>{{ $book->quantity }}</b>
+                                    @endif
+                                    <!-- <button type="button" class="btn btn-success"
                                             id="detailsButton">Details</button> -->
-                                        <button type="button" class="btn btn-success detailsButton"
-                                            data-title="{{ $book->title }}"
-                                            data-description="{{ $book->description }}">Details</button>
+                                    <button type="button" class="btn btn-success detailsButton"
+                                        data-title="{{ $book->title }}"
+                                        data-description="{{ $book->description }}">Details</button>
 
-                                    </div>
+
                                 </div>
                             </td>
                             @endforeach
@@ -75,10 +78,11 @@
                     @csrf
                     <button type="submit" class="btn btn-success">Edit</button>
                 </form>
-                <form id="deleteForm" action="{{ route('books.destroy', $book->id) }}" method="POST">
+                <form action="{{ route('books.destroy', $book->id) }}" method="post" id="deleteForm">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    <button type="submit" class="btn btn-danger"
+                        onclick="return confirm('Are you sure you want to delete this book?')">Delete</button>
                 </form>
             </div>
             @endrole
