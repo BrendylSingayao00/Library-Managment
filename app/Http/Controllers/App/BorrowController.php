@@ -9,6 +9,7 @@ use App\Models\Book;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 
 class BorrowController extends Controller
@@ -74,20 +75,26 @@ class BorrowController extends Controller
     {
         return view('app.books.show', compact('book'));
     }
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Borrow $borrow)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
      */
+    public function edit(Borrow $borrow)
+    {
+        return view('app.borrow.edit', compact('borrow'));
+    }
+
     public function update(Request $request, Borrow $borrow)
     {
-        //
+        $request->validate([
+            'date_borrow' => 'required|date',
+            'date_return' => 'required|date|after:date_borrow',
+        ]);
+
+        $borrow->update($request->only('date_borrow', 'date_return'));
+
+        return response()->json(['message' => 'Borrow updated successfully']);
     }
 
     /**
@@ -95,7 +102,9 @@ class BorrowController extends Controller
      */
     public function destroy(Borrow $borrow)
     {
-        //
+        $borrow->delete();
+
+        return redirect()->route('app.borrow.library')->with('success', 'Borrow deleted successfully');
     }
 
     public function borrow(Book $book)
@@ -113,7 +122,12 @@ class BorrowController extends Controller
         $userName = Auth::user()->name;
 
         // Fetch borrow records where the name matches the current user's name
-        $borrows = Borrow::where('name', $userName)->get();
+        // $borrows = Borrow::where('name', $userName)->get();
+        $borrows = Borrow::where('name', $userName)
+            // ->where('status', ['pending', 'approved', 'completed'])
+            ->whereIn('status', ['pending', 'approved', 'completed'])
+            ->get();
+
 
         return view('app.borrow.library', compact('borrows'));
     }
@@ -123,5 +137,22 @@ class BorrowController extends Controller
         $borrows = Borrow::all();
 
         return view('app.borrow.borrowing', compact('borrows'));
+    }
+
+    public function approve(Borrow $borrow)
+    {
+        $borrow->status = 'approved';
+        $borrow->save();
+        return redirect()->route('borrow.borrowing')->with('success', 'Borrow request approved successfully!');
+
+        // return redirect()->back()->with('success', 'Borrow request approved successfully!');
+    }
+
+    public function complete(Borrow $borrow)
+    {
+        $borrow->status = 'completed';
+        $borrow->save();
+
+        return redirect()->back()->with('success', 'Borrow request completed successfully!');
     }
 }

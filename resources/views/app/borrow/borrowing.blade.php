@@ -19,18 +19,39 @@
             </thead>
             <tbody>
                 @foreach($borrows as $borrow)
-                <tr>
-                    <td>{{ $borrow->id }}</td>
-                    <td>{{ $borrow->book_title }}</td>
-                    <td>{{ $borrow->author }}</td>
-                    <td>{{ $borrow->name }}</td>
-                    <td>{{ $borrow->email }}</td>
-                    <td>{{ $borrow->student_id }}</td>
-                    <td>{{ $borrow->date_borrow }}</td>
-                    <td>{{ $borrow->date_return }}</td>
+                <tr @if($borrow->date_return < now()->format('Y-m-d') && $borrow->status != 'completed') class="overdue"
+                        @endif>
+                        <td>{{ $borrow->id }}</td>
+                        <td>{{ $borrow->book_title }}</td>
+                        <td>{{ $borrow->author }}</td>
+                        <td>{{ $borrow->name }}</td>
+                        <td>{{ $borrow->email }}</td>
+                        <td>{{ $borrow->student_id }}</td>
+                        <td>{{ $borrow->date_borrow }}</td>
+                        <td>{{ $borrow->date_return }}</td>
+                        <td>
+                            @if($borrow->status == 'pending')
+                            <form action="{{ route('borrow.approve', $borrow) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-success">Approve</button>
+                            </form>
+                            @elseif($borrow->status == 'approved')
+                            <form action="{{ route('borrow.complete', $borrow) }}" method="post">
+                                @csrf
+                                <input type="hidden" name="status" value="completed"> <!-- Add this hidden input -->
+                                <button type="submit" class="btn btn-primary">Return</button>
+                            </form>
+                            @endif
+                        </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+    <style>
+    .overdue {
+        background-color: #ffcccc;
+        /* Light red */
+    }
+    </style>
 </x-user-layout>

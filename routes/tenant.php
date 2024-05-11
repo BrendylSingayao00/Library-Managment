@@ -58,6 +58,15 @@ Route::middleware([
         Route::post('borrow/store', [BorrowController::class, 'store'])->name('borrow.store');
         Route::get('/library', [BorrowController::class, 'library'])->name('borrow.library');
         Route::get('/borrowing', [BorrowController::class, 'borrowing'])->name('borrow.borrowing');
+        Route::delete('/borrow/{borrow}', [BorrowController::class, 'cancel'])->name('borrow.cancel');
+
+        Route::get('/borrow/{borrow}/edit', [BorrowController::class, 'edit'])->name('borrow.edit');
+        Route::put('/borrow/{borrow}', [BorrowController::class, 'update'])->name('borrow.update');
+        Route::delete('/borrow/{borrow}', [BorrowController::class, 'destroy'])->name('borrow.destroy');
+
+        Route::post('borrow/{borrow}/approve', [BorrowController::class, 'approve'])->name('borrow.approve');
+        Route::post('borrow/{borrow}/complete', [BorrowController::class, 'complete'])->name('borrow.complete');
+
 
 
 
