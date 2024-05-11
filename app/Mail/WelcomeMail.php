@@ -57,12 +57,17 @@ class WelcomeMail extends Mailable
     {
         return [];
     }
+    // public function build()
+    // {
+    //     return $this->markdown('emails.welcome')->with([
+    //         'name' => $this->user->name,
+    //         'email' => $this->user->email,
+    //         'password' => $this->user->password, 
+    //     ]);
+    // }
     public function build()
     {
-        return $this->markdown('emails.welcome')->with([
-            'name' => $this->user->name,
-            'email' => $this->user->email,
-            'password' => $this->user->password, // You might want to reconsider sending the password in plain text
-        ]);
+        return $this->markdown('emails.welcome')
+            ->subject('Your New User Password');
     }
 }

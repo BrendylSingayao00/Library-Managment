@@ -49,6 +49,7 @@ class BookController extends Controller
             'description' => 'required|string',
             'category' => 'required|string|max:255',
             'book_cover' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust image validation as per your requirements
+            'quantity' => 'required|integer|min:1',
         ]);
 
         $book = new Book();
@@ -56,6 +57,7 @@ class BookController extends Controller
         $book->author = $request->author;
         $book->description = $request->description;
         $book->category = $request->category;
+        $book->quantity = $request->quantity;
 
 
 
@@ -73,6 +75,7 @@ class BookController extends Controller
             'description' => $request->description,
             'category' => $request->category,
             'book_cover' => $imageName ?? null, // Use null if no file uploaded
+            'quantity' => $request->quantity,
         ]);
 
         return redirect()->route('books.index');

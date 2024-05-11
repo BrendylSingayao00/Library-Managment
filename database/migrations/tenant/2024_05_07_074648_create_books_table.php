@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('category');
             $table->string('book_cover');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

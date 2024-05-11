@@ -31,6 +31,9 @@
                         <option>Sports</option>
                         <option>Technology</option>
                     </select>
+                    <!-- Add book quantity -->
+                    <label for="quantity">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1" required>
                 </ul>
             </div>
 
