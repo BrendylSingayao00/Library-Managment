@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\App;
+namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
@@ -46,14 +46,7 @@ class UserController extends Controller
         ]);
 
 
-        // User::create($ValidatedData);
-
-        $user = User::create($ValidatedData);
-
-        // Assign the default role (student)
-        $role = Role::where('name', 'student')->first();
-        $user->roles()->attach($role);
-
+        User::create($ValidatedData);
 
         return redirect()->route('users.index');
     }

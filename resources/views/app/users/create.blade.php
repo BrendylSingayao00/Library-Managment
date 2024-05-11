@@ -49,14 +49,14 @@
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                         </div>
 
-                        <div class="mt-4">
+                        <!-- <div class="mt-4">
                             <x-input-label for="roles" :value="__('Roles')" />
                             <select multiple class="block mt-1 w-full" name="roles[]">
                                 @foreach($roles as $role)
                                 <option value="{{ $role }}">{{ $role }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> -->
 
                         <div class="flex items-center justify-end mt-4">
 
