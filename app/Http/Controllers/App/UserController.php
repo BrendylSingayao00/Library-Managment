@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -53,6 +55,9 @@ class UserController extends Controller
         // Assign the default role (student)
         $role = Role::where('name', 'student')->first();
         $user->roles()->attach($role);
+
+        // Send email with user details
+        Mail::to($user->email)->send(new WelcomeMail($user, $request->password));
 
 
         return redirect()->route('users.index');
@@ -99,6 +104,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
 }

@@ -73,6 +73,7 @@ Route::middleware([
         Route::group(['middleware' => ['role:admin']], function () {
             Route::resource('users', UserController::class);
             Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+            Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         });
     });
 
