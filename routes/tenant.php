@@ -9,7 +9,8 @@ use App\Http\Controllers\App\{
     ProfileController,
     UserController,
     BookController,
-    BorrowController
+    BorrowController,
+    DashboardController,
 };
 
 
@@ -37,8 +38,11 @@ Route::middleware([
         return view('app.welcome');
     });
 
+    // Route::get('/dashboard', function () {
+    //     return view('app.dashboard');
+    // })->middleware(['auth', 'verified'])->name('dashboard');
     Route::get('/dashboard', function () {
-        return view('app.dashboard');
+        return (new DashboardController())->index();
     })->middleware(['auth', 'verified'])->name('dashboard');
 
     Route::middleware('auth')->group(function () {
