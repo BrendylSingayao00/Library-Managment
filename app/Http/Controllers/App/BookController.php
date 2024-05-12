@@ -62,35 +62,93 @@ class BookController extends Controller
             return redirect()->back()->withErrors(['error' => 'The book already exists.']);
         }
 
+        // Get tenant folder name (e.g., based on domain)
+        $tenantFolder = str_replace('.', '_', request()->getHost());
 
-        $book = new Book();
-        $book->title = $request->title;
-        $book->author = $request->author;
-        $book->description = $request->description;
-        $book->category = $request->category;
-        $book->quantity = $request->quantity;
-
-
-
+        $imageName = null;
         // Handle file upload
         if ($request->hasFile('book_cover')) {
             $image = $request->file('book_cover');
             $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('uploads'), $imageName);
+
+            // Move the image to tenant's book covers folder
+            $image->move(public_path('uploads/' . $tenantFolder), $imageName);
         }
 
         // Save book data to the database
-        Book::create([
+        $book = Book::create([
             'title' => $request->title,
             'author' => $request->author,
             'description' => $request->description,
             'category' => $request->category,
-            'book_cover' => $imageName ?? null, // Use null if no file uploaded
+            'book_cover' => 'uploads/' . $tenantFolder . '/' . $imageName ?? null, // Use null if no file uploaded
             'quantity' => $request->quantity,
         ]);
 
         return redirect()->route('books.index');
     }
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'title' => 'required|string|max:255',
+    //         'author' => 'required|string|max:255',
+    //         'description' => 'required|string',
+    //         'category' => 'required|string|max:255',
+    //         'book_cover' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust image validation as per your requirements
+    //         'quantity' => 'required|integer|min:1',
+    //     ]);
+
+    //     // Check if the book already exists
+    //     $existingBook = Book::where('title', $request->title)
+    //         ->where('author', $request->author)
+    //         ->where('category', $request->category)
+    //         ->exists();
+
+    //     if ($existingBook) {
+    //         return redirect()->back()->withErrors(['error' => 'The book already exists.']);
+    //     }
+
+
+    //     $book = new Book();
+    //     $book->title = $request->title;
+    //     $book->author = $request->author;
+    //     $book->description = $request->description;
+    //     $book->category = $request->category;
+    //     $book->quantity = $request->quantity;
+
+    //     $imageName = null;
+    //     // Handle file upload
+    //     if ($request->hasFile('book_cover')) {
+    //         $image = $request->file('book_cover');
+    //         $imageName = time() . '_' . $image->getClientOriginalName();
+
+    //         // Get tenant folder name (e.g., based on email)
+    //         $tenantFolder = str_replace('@', '_', $request->user()->email);
+
+    //         // Move the image to tenant's book covers folder
+    //         $image->move(public_path('uploads/' . $tenantFolder), $imageName);
+    //     }
+
+    //     // // Handle file upload
+    //     // if ($request->hasFile('book_cover')) {
+    //     //     $image = $request->file('book_cover');
+    //     //     $imageName = time() . '_' . $image->getClientOriginalName();
+    //     //     $image->move(public_path('uploads'), $imageName);
+    //     // }
+
+    //     // Save book data to the database
+    //     Book::create([
+    //         'title' => $request->title,
+    //         'author' => $request->author,
+    //         'description' => $request->description,
+    //         'category' => $request->category,
+    //         'book_cover' => $imageName ?? null, // Use null if no file uploaded
+    //         'quantity' => $request->quantity,
+    //     ]);
+
+    //     return redirect()->route('books.index');
+    // }
 
     /**
      * Display the specified resource.
@@ -135,15 +193,28 @@ class BookController extends Controller
             'quantity' => $request->quantity,
         ]);
 
+        // // Handle file upload
+        // if ($request->hasFile('book_cover')) {
+        //     $image = $request->file('book_cover');
+        //     $imageName = time() . '_' . $image->getClientOriginalName();
+        //     $image->move(public_path('uploads'), $imageName);
+
+        //     $book->update([
+        //         'book_cover' => $imageName,
+        //     ]);
+        // }
+
+        $imageName = $book->book_cover;
         // Handle file upload
         if ($request->hasFile('book_cover')) {
             $image = $request->file('book_cover');
             $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('uploads'), $imageName);
 
-            $book->update([
-                'book_cover' => $imageName,
-            ]);
+            // Get tenant folder name (e.g., based on email)
+            $tenantFolder = str_replace('@', '_', $request->user()->email);
+
+            // Move the image to tenant's book covers folder
+            $image->move(public_path('uploads/' . $tenantFolder), $imageName);
         }
 
         return redirect()->route('books.index')->with('success', 'Book edited successfully!');
@@ -177,4 +248,6 @@ class BookController extends Controller
 
     //     return view('app.books.index', compact('books'));
     // }
+
+
 }

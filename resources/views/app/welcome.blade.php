@@ -48,8 +48,7 @@
                 <ul class="nav_menu_list">
 
                     <li class="nav_menu_item">
-                        <a href="{{ route('login') }}"
-                            class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
                             in</a>
                     </li>
                     <!-- <li class="nav_menu_item">
@@ -86,8 +85,7 @@
 
                     <div class="btn_wrapper">
                         <button class="btn view_more_btn">
-                            <a href="{{ route('login') }}"
-                                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                            <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
                                 in</a>
                         </button>
 
@@ -96,7 +94,21 @@
                 </div>
                 <div class="grid-item-2">
                     <div class="team_img_wrapper">
-                        <img src="{{ url('img/main-logo.png') }}" alt="team-img" />
+                        <div class="team_img_wrapper">
+                            <div class="team_img_wrapper">
+                                @php
+                                $firstUser = App\Models\User::first();
+                                @endphp
+
+                                @if ($firstUser && $firstUser->profile_picture)
+                                <img src="{{ url('profile_picture/' . $firstUser->profile_picture) }}" alt="Profile Picture" class="profile-picture-item">
+
+                                @else
+                                <img src="{{ url('img/default-profile-picture.png') }}" alt="Default Profile Picture" class="profile-picture-item">
+                                @endif
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
