@@ -49,7 +49,7 @@
             <ul class="nav-links">
                 <li><a href="{{ route('dashboard')}}">
                         <i class="uil uil-estate"></i>
-                        <span class="link-name">Dahsboard</span>
+                        <span class="link-name">Dashboard</span>
                     </a></li>
                 <li><a href="{{ route('tenants.index')}}">
                         <i class="uil uil-files-landscapes"></i>

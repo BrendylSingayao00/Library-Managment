@@ -61,7 +61,17 @@ class TenantController extends Controller
 
         // Send email with password
 
-        Mail::to($request->email)->send(new NewTenantPassword($tenant, $request->password));
+        try {
+            // Attempt to send the email
+            Mail::to($request->email)->send(new NewTenantPassword($tenant, $request->password));
+        } catch (\Exception $e) {
+            // Log the exception or handle the error accordingly
+            // For example, you can log the error message
+            \Log::error('Error sending email: ' . $e->getMessage());
+            // You can also return a response with an error message
+            return response()->json(['error' => 'Failed to send email'], 500);
+        }
+        
 
         $tenant->domains()->create([
             'domain' => $ValidatedData['domain_name'] . '.' . config('app.domain')

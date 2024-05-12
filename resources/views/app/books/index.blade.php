@@ -1,4 +1,7 @@
 <x-user-layout>
+    <div class="top">
+    <strong class="books-title">Books</strong>
+    </div>
     <div class="dash-content">
         <div class="search-bar">
             <i class="uil uil-bars sidebar-toggle"></i>
@@ -8,12 +11,12 @@
             </div>
         </div>
         <div class="overview">
-            <div class="title">
+            <!-- <div class="title">
                 <span class="text">BOOKS</span>
-            </div>
+            </div> -->
             @role('admin')
             <div>
-                <x-btn-link class="ml-4 float-right flex" href="{{ route('books.create') }}">
+                <x-btn-link class="ml-4 flex padding-below adjusted-width" href="{{ route('books.create') }}">
                     Add Book</x-btn-link>
             </div>
             @endrole

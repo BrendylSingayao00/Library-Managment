@@ -275,3 +275,17 @@ h1 {
 .btn-link:hover {
     text-decoration: underline;
 }
+
+.books-title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    margin-right: auto; /* Pushes the title to the left */
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}

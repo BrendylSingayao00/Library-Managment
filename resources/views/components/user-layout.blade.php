@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Other Utilities</title>
+    <title>EduAcademia</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -65,7 +65,7 @@
             <ul class="nav-links">
                 <li><a href="{{ route('dashboard')}}">
                         <i class="uil uil-estate"></i>
-                        <span class="link-name">Dahsboard</span>
+                        <span class="link-name">Dashboard</span>
                     </a></li>
                 @role('admin')
                 <li><a href="{{ route('users.index')}}">

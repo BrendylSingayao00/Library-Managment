@@ -40,22 +40,22 @@
 
                     <div class="boxes">
                         <div class="box box1">
-                            <span class="text">Total Book</span>
+                            <strong span class="text">TOTAL BOOKS</strong>
                             <span class="number">{{ $totalBooks }}</span>
                         </div>
                         <div class="box box2">
-                            <span class="text">Available Books</span>
+                            <span class="text">AVAILABLE BOOKS</span>
                             <span class="number">{{ $availableBooks }}</span>
                         </div>
                         <div class="box box3">
-                            <span class="text">New Books</span>
+                            <span class="text">NEW BOOKS</span>
                             <span class="number">{{ $newBooks }}</span>
                         </div>
                     </div>
                 </div>
                 <div class="activity">
                     <div class="title">
-                        <span class="text">Recent Books</span>
+                        <span class="text">RECENTLY ADDED</span>
                     </div>
                     <div class="activity-data">
                         <table>

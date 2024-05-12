@@ -1,6 +1,10 @@
 <x-user-layout>
-    <div class="container">
-        <h1>Borrowing</h1>
+    <!-- <div class="container"> -->
+    <div class="top">
+    <strong class="borrowing-title">Borrowing</strong>
+    </div>
+         <div class="dash-content">
+        <div class="overview">
         @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
         @endif
@@ -53,5 +57,39 @@
         background-color: #ffcccc;
         /* Light red */
     }
+    .borrowing-title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    margin-right: auto; /* Pushes the title to the left */
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+    thead {
+    background-color: #f2f2f2; /* Light gray background color */
+}
+
+thead th {
+    padding: 10px; /* Add padding to the header cells */
+    text-align: left; /* Align text to the left */
+    font-weight: bold; /* Make text bold */
+    border-bottom: 1px solid #ddd; /* Add bottom border */
+    color: black; 
+}
+
+thead th:first-child {
+    border-top-left-radius: 5px; /* Add rounded corners to the top left header cell */
+}
+
+thead th:last-child {
+    border-top-right-radius: 5px; /* Add rounded corners to the top right header cell */
+}
+   
     </style>
 </x-user-layout>
