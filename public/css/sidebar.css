@@ -533,3 +533,100 @@ nav.close~.dashboard .top {
     }
 
 }
+/* Style for form container */
+.form {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for form labels */
+label {
+    font-weight: bold;
+}
+
+/* Style for form inputs */
+.form-control {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for submit button */
+#add-btn,
+.btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-success:hover,
+.btn-secondary:hover {
+    opacity: 0.8;
+}
+
+/* Style for form rows */
+#row-1,
+#row-2 {
+    margin-bottom: 15px;
+}
+
+/* Style for form row 3 */
+#row-3 {
+    display: flex;
+    justify-content: space-between;
+}
+#description {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px; /* Set a minimum height */
+    max-height: 100px; /* Set a maximum height */
+}
+/* Style for book cover label */
+label[for="bookCover"] {
+    font-weight: bold;
+}
+
+/* Style for book cover input */
+#bookCover {
+    display: block; /* Make the input a block element */
+    margin-top: 10px; /* Add some top margin for spacing */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for file input button */
+#bookCover[type="file"]::-webkit-file-upload-button {
+    padding: 2px 2px;
+    background-color: #818284;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+

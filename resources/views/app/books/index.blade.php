@@ -1,22 +1,30 @@
 <x-user-layout>
     <div class="top">
-    <strong class="books-title">Books</strong>
-    </div>
-    <div class="dash-content">
-        <div class="search-bar">
-            <i class="uil uil-bars sidebar-toggle"></i>
-            <div class="search-box">
+    <strong class="books-title">BOOKS</strong>
+    <i class="uil uil-bars sidebar-toggle"></i>
+    <div class="search-box">
                 <i class="uil uil-search"></i>
                 <input type="text" placeholder="Search here...">
-            </div>
-        </div>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="dash-content">
+        <!-- <div class="search-bar"> -->
+            <!-- <i class="uil uil-bars sidebar-toggle"></i> -->
+            <!-- <div class="search-box">
+                <i class="uil uil-search"></i> -->
+                <!-- <input type="text" placeholder="Search here..."> -->
+            <!-- </div>
+        </div> -->
         <div class="overview">
             <!-- <div class="title">
                 <span class="text">BOOKS</span>
             </div> -->
             @role('admin')
-            <div>
-                <x-btn-link class="ml-4 flex padding-below adjusted-width" href="{{ route('books.create') }}">
+            <div class="new-book">
+                <x-btn-link class="ml-10 float-right" href="{{ route('books.create') }}">
                     Add Book</x-btn-link>
             </div>
             @endrole

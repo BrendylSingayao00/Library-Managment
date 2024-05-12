@@ -289,3 +289,18 @@ h1 {
     padding: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
 }
+
+.new-book {
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+}
+
+.new-book .ml-10 {
+    margin-left: 0 !important; /* Remove left margin */
+}
+
+.new-book .float-right {
+    margin-left: 50px; /* Move the "Add Book" link to the left */
+}
+
+

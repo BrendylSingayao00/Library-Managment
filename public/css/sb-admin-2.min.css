@@ -196,14 +196,26 @@ body {
 }
 
 .boxes .box.box1 {
-    background-color: #CAF4FF; /* Change the color to your desired color */
+    background-color: #40A2D8; /* Change the color to your desired color */
 }
 
 .boxes .box.box2 {
-    background-color: #A0DEFF; /* Change the color to your desired color */
+    background-color: #3468C0; /* Change the color to your desired color */
 }
 
 .boxes .box.box3 {
-    background-color: #7FC7D9; /* Change the color to your desired color */
+    background-color: #FF9843; /* Change the color to your desired color */
+}
+.dashboard-title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    margin-right: auto; /* Pushes the title to the left */
 }
 
+.top {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}

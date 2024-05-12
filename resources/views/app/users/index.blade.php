@@ -6,7 +6,7 @@
             <i class="uil uil-search"></i>
             <input type="text" placeholder="Search here...">
         </div> -->
-        <strong class="borrower-title">Borrower</strong>
+        <strong class="borrower-title">BORROWER</strong>
 
     </div>
     <div class="dash-content">

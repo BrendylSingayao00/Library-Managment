@@ -1,7 +1,7 @@
 <x-user-layout>
     <!-- <div class="container"> -->
     <div class="top">
-    <strong class="borrowing-title">Borrowing</strong>
+    <strong class="borrowing-title">BORROWING</strong>
     </div>
          <div class="dash-content">
         <div class="overview">
