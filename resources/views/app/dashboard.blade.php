@@ -28,18 +28,22 @@
 
     <body>
         <section>
-            <div class="top">
-                <i class="uil uil-bars sidebar-toggle"></i>
-                <div class="search-box">
-                    <i class="uil uil-search"></i>
-                    <input type="text" placeholder="Search here...">
-                </div>
+        <div class="header-box">
+    <div class="top">
+        <i class="uil uil-bars sidebar-toggle"></i>
+        <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here...">
+        </div>
+    </div>
+   
+</div>
 
             </div>
             <div class="dash-content">
                 <div class="overview">
                     <div class="title">
-                        <span class="text">Dashboard</span>
+                    <strong class="text">DASHBOARD</strong>
                     </div>
 
                     <div class="boxes">
