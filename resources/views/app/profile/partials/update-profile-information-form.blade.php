@@ -54,16 +54,7 @@
         <div>
             <x-input-label for="profile_picture" :value="__('Profile Picture')" />
             <input id="profile_picture" type="file" class="mt-1 block w-full" name="profile_picture">
-            @if ($user->profile_picture)
-            <div class="mt-2">
-                <label for="current_profile_picture" class="block font-medium text-gray-700">Current Profile
-                    Picture:</label>
-                <img src="{{ url($user->profile_picture) }}" alt="Current Profile Picture"
-                    class="mt-1 w-32 h-32 object-cover rounded">
-            </div>
-            @else
-            <p class="mt-2 text-sm text-gray-500">No profile picture uploaded.</p>
-            @endif
+
             <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
         </div>
 
@@ -71,7 +62,7 @@
 
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
 
             @if (session('status') === 'profile-updated')
             <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
@@ -79,4 +70,15 @@
             @endif
         </div>
     </form>
+
+    @if ($user->profile_picture)
+    <div class="mt-2">
+        <label for="current_profile_picture" class="block font-medium text-gray-700">Current Profile
+            Picture:</label>
+        <img src="{{ url($user->profile_picture) }}" alt="Current Profile Picture"
+            class="mt-1 w-32 h-32 object-cover rounded">
+    </div>
+    @else
+    <p class="mt-2 text-sm text-gray-500">No profile picture uploaded.</p>
+    @endif
 </section>
