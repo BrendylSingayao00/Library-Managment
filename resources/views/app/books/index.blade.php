@@ -25,8 +25,13 @@
                         <tr>
                             @foreach($books as $book)
                             <td class="book-details book-details-wide booklist-panel">
-                                <div><img src="{{ url('uploads/' . $book->book_cover) }}" alt="book Cover"
+                                <div>
+                                    @if($book->book_cover)
+                                    <img src="{{ url($book->book_cover) }}" alt="book Cover" class="book-cover-item">
+                                    @else
+                                    <img src="{{ asset('uploads/default_book_cover.jpg') }}" alt="Default book Cover"
                                         class="book-cover-item">
+                                    @endif
                                     <br>
                                     <p>{{ $book->category }}</p>
                                     <strong>{{ substr($book->title, 0, 20) }}</strong><br>

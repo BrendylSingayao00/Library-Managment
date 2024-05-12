@@ -17,4 +17,9 @@ class Book extends Model
         'book_cover',
         'quantity',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

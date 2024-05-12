@@ -75,10 +75,13 @@
                                             </x-btn-link>
                                         </span>
 
-                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="inline">
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                                            class="inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" onclick="return confirm('Are you sure you want to delete {{$user->name}}?')" class="btn-danger">
+                                            <button type="submit"
+                                                onclick="return confirm('Are you sure you want to delete {{$user->name}}?')"
+                                                class="btn-danger">
                                                 Delete
                                             </button>
                                         </form>

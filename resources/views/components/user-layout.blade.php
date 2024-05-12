@@ -13,7 +13,9 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -31,7 +33,9 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/2.0.6/css/dataTables.dataTables.css" rel="stylesheet">
 
@@ -90,15 +94,23 @@
             </ul>
 
             <ul class="logout-mode">
+                <li>
+                    @role('admin')
+                    <a href="{{ route('app.profile.edit') }}">
+                        <i class="uil uil-signout"></i><span class="link-name">Profile</span>
+                    </a>
+                    @endrole
+                </li>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <li><a href="route('logout')" onclick="event.preventDefault();
                                           this.closest('form').submit();">
                             <i class="uil uil-signout"></i>
                             <span class="link-name">Logout</span>
-                        </a>
+
                     </li>
                 </form>
+
                 <li class="mode">
                     <a href="#">
                         <i class="uil uil-moon"></i>
@@ -118,38 +130,38 @@
 
 </body>
 <script>
-    const body = document.querySelector("body"),
-        modeToggle = body.querySelector(".mode-toggle");
-    sidebar = body.querySelector("nav");
-    sidebarToggle = body.querySelector(".sidebar-toggle");
+const body = document.querySelector("body"),
+    modeToggle = body.querySelector(".mode-toggle");
+sidebar = body.querySelector("nav");
+sidebarToggle = body.querySelector(".sidebar-toggle");
 
-    let getMode = localStorage.getItem("mode");
-    if (getMode && getMode === "dark") {
-        body.classList.toggle("dark");
+let getMode = localStorage.getItem("mode");
+if (getMode && getMode === "dark") {
+    body.classList.toggle("dark");
+}
+
+let getStatus = localStorage.getItem("status");
+if (getStatus && getStatus === "close") {
+    sidebar.classList.toggle("close");
+}
+
+modeToggle.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    if (body.classList.contains("dark")) {
+        localStorage.setItem("mode", "dark");
+    } else {
+        localStorage.setItem("mode", "light");
     }
+});
 
-    let getStatus = localStorage.getItem("status");
-    if (getStatus && getStatus === "close") {
-        sidebar.classList.toggle("close");
+sidebarToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+    if (sidebar.classList.contains("close")) {
+        localStorage.setItem("status", "close");
+    } else {
+        localStorage.setItem("status", "open");
     }
-
-    modeToggle.addEventListener("click", () => {
-        body.classList.toggle("dark");
-        if (body.classList.contains("dark")) {
-            localStorage.setItem("mode", "dark");
-        } else {
-            localStorage.setItem("mode", "light");
-        }
-    });
-
-    sidebarToggle.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-        if (sidebar.classList.contains("close")) {
-            localStorage.setItem("status", "close");
-        } else {
-            localStorage.setItem("status", "open");
-        }
-    })
+})
 </script>
 
 </html>
