@@ -13,3 +13,46 @@
     width: 350px;
 
 }
+/* Search box container */
+.search-box {
+    position: relative;
+    display: inline-block;
+}
+
+/* Search input field */
+.search-box input[type="text"] {
+    width: 200px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: width 0.3s ease-in-out;
+}
+
+/* Search icon */
+.search-box .uil-search {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+/* Hover effect for input field */
+.search-box input[type="text"]:focus {
+    width: 250px;
+}
+
+/* Style for the top container */
+.top {
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the sidebar toggle icon */
+.sidebar-toggle {
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    margin-right: 10px;
+}

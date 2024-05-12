@@ -1,21 +1,20 @@
 <x-user-layout>
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
-    <div class="container">
-        <div>
-            <h1>Books</h1>
-            <hr>
-            <div class="search-bar mb-3">
-                <input type="text" id="search" placeholder="Search...">
-                <button type="button" id="searchBtn">Search</button>
+    <div class="dash-content">
+        <div class="search-bar">
+            <i class="uil uil-bars sidebar-toggle"></i>
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+        </div>
+        <div class="overview">
+            <div class="title">
+                <i class="uil uil-tachometer-fast-alt"></i>
+                <span class="text">Book</span>
             </div>
             @role('admin')
             <div>
-
-                <x-btn-link class="ml-4 float-right flex mb-3" href="{{ route('books.create') }}">
+                <x-btn-link class="ml-4 float-right flex" href="{{ route('books.create') }}">
                     Add Book</x-btn-link>
             </div>
             @endrole

@@ -26,7 +26,7 @@
         <!-- ==== NAVBAR ==== -->
         <nav class="nav">
             <div class="logo">
-                <h2>Devkit.</h2>
+                <h2>EduAcademia</h2>
             </div>
 
             <div class="nav_menu" id="nav_menu">
