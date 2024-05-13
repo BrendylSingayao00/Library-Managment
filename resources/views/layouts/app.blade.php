@@ -79,15 +79,17 @@
             <div class="logo-image">
                 <img src="images/logo.png" alt="">
             </div>
-            <span class="logo_name">CodingLab</span>
+            <span class="logo_name" style="display: block; text-align: center; font-size: 20px;">EduAcademia</span>
         </div>
         <div class="menu-items">
             <ul class="nav-links">
-                <li><a href="{{ route('dashboard')}}">
+            <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard')}}">
                         <i class="uil uil-estate"></i>
                         <span class="link-name">Dashboard</span>
                     </a></li>
-                <li><a href="{{ route('tenants.index')}}">
+                    <li class="{{ request()->routeIs('tenants.*') ? 'active' : '' }}">
+                <a href="{{ route('tenants.index')}}">
                         <i class="uil uil-files-landscapes"></i>
                         <span class="link-name">Tenant</span>
                     </a></li>
