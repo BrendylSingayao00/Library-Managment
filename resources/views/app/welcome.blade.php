@@ -45,24 +45,7 @@
                     <i class="ri-close-fill"></i>
                 </button>
 
-                <ul class="nav_menu_list">
-
-                    <li class="nav_menu_item">
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                            in</a>
-                    </li>
-                    <!-- <li class="nav_menu_item">
-                        @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    </li> -->
-                    <li class="nav_menu_item">
-                        <!-- <a href="#" class="nav_menu_link">contact</a> -->
-                    </li>
-                </ul>
-            </div>
-
+        
             <button class="toggle_btn" id="toggle_btn">
                 <i class="ri-menu-line"></i>
             </button>
@@ -74,13 +57,16 @@
             <div class="grid-cols-2">
                 <div class="grid-item-1">
                     <h1 class="main-heading">
-                        Welcome to <span><strong>EduAcademia</strong></span>
+                        Welcome to <span><strong>EduAcademia</strong> </span>
+                        
                         <!-- <br />
                         Develop anything. -->
                     </h1>
+                    <p>your gateway to limitless learning!</p>
                     <p class="info-text">
-                        Build a beautiful, modern website with flexible components built
-                        from scratch.
+                    Explore our extensive online library, personalized recommendations, and collaborative 
+                    spaces designed to empower educators and inspire learners. 
+                    Join us today and unlock your journey toward education.
                     </p>
 
                     <div class="btn_wrapper">
@@ -89,7 +75,6 @@
                                 in</a>
                         </button>
 
-                        <button class="btn documentation_btn">documentation</button>
                     </div>
                 </div>
                 <div class="grid-item-2">
