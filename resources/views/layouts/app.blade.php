@@ -9,7 +9,43 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'Laravel') }}</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body class="font-sans antialiased">
+        <div class="min-h-screen bg-gray-100">
+            @include('app.layouts.navigation')
+
+            <!-- Page Heading -->
+            @if (isset($header))
+                <header class="bg-white shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endif
+
+            <!-- Page Content -->
+            <main>
+                {{ $slot }}
+            </main>
+        </div>
+    </body>
+</html>
+.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -43,15 +79,17 @@
             <div class="logo-image">
                 <img src="images/logo.png" alt="">
             </div>
-            <span class="logo_name">CodingLab</span>
+            <span class="logo_name" style="display: block; text-align: center; font-size: 20px;">EduAcademia</span>
         </div>
         <div class="menu-items">
             <ul class="nav-links">
-                <li><a href="{{ route('dashboard')}}">
+            <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard')}}">
                         <i class="uil uil-estate"></i>
                         <span class="link-name">Dashboard</span>
                     </a></li>
-                <li><a href="{{ route('tenants.index')}}">
+                    <li class="{{ request()->routeIs('tenants.*') ? 'active' : '' }}">
+                <a href="{{ route('tenants.index')}}">
                         <i class="uil uil-files-landscapes"></i>
                         <span class="link-name">Tenant</span>
                     </a></li>
@@ -86,6 +124,7 @@
     </main>
 
 </body>
+
 <script>
 const body = document.querySelector("body"),
     modeToggle = body.querySelector(".mode-toggle");
@@ -119,6 +158,7 @@ sidebarToggle.addEventListener("click", () => {
         localStorage.setItem("status", "open");
     }
 })
+
 </script>
 
 </html>

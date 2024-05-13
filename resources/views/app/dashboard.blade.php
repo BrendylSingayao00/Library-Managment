@@ -28,7 +28,7 @@
         <section>
             <div class="header-box">
                 <div class="top">
-                <strong class="dashboard-title">DASHBOARD</strong>
+                <strong class="dashboard-title">Dashboard</strong>
                     <i class="uil uil-bars sidebar-toggle"></i>
                     <div class="search-box">
                         <i class="uil uil-search"></i>
