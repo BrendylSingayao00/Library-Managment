@@ -13,42 +13,42 @@
 
                     <form method="POST" action="{{ route('users.store') }}">
                         @csrf
-                      <!-- Name -->
-<div>
-    <x-input-label for="name" :value="__('Name')" />
-    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus
-        autocomplete="name" />
-    <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
-</div>
+                        <!-- Name -->
+                        <div>
+                            <x-input-label for="name" :value="__('Name')" />
+                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" required autofocus
+                                autocomplete="name" />
+                            <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
+                        </div>
 
-<!-- Email Address -->
-<div class="mt-4">
-    <x-input-label for="email" :value="__('Email')" />
-    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-        :value="old('email')" required autocomplete="username" />
-    <x-input-error :messages="$errors->get('email')" class="mt-2" />
-</div>
+                        <!-- Email Address -->
+                        <div class="mt-4">
+                            <x-input-label for="email" :value="__('Email')" />
+                            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                                :value="old('email')" required autocomplete="username" />
+                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        </div>
 
-<!-- Password -->
-<div class="col-md-6 mt-4">
-    <label for="password" class="form-label">Password</label>
-    <div class="input-group">
-        <input id="password" class="form-control" type="text" name="password" readonly required
-            autocomplete="new-password" />
-        <button type="button" class="btn btn-secondary" id="generatePassword">Generate</button>
-    </div>
-    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-</div>
+                        <!-- Password -->
+                        <div class="col-md-6 mt-4">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <input id="password" class="form-control" type="text" name="password" readonly required
+                                    autocomplete="new-password" />
+                                <button type="button" class="btn btn-secondary" id="generatePassword">Generate</button>
+                            </div>
+                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                        </div>
 
-<div class="col-md-6 mt-4" id="confirmPasswordWrapper">
-    <label for="password_confirmation" class="form-label">Confirm Password</label>
-    <div class="input-group">
-        <input id="password_confirmation" class="form-control" type="text"
-            name="password_confirmation" required autocomplete="new-password" />
-        <button type="button" class="btn btn-primary" id="confirmPassword">Confirm</button>
-    </div>
-    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-</div>
+                        <div class="col-md-6 mt-4" id="confirmPasswordWrapper" style="display: none;">
+                            <label for="password_confirmation" class="form-label">Confirm Password</label>
+                            <div class="input-group">
+                                <input id="password_confirmation" class="form-control" type="text"
+                                    name="password_confirmation" required autocomplete="new-password" />
+                                <button type="button" class="btn btn-primary" id="confirmPassword">Confirm</button>
+                            </div>
+                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                        </div>
 
                         <!-- <div class="mt-4">
                             <x-input-label for="roles" :value="__('Roles')" />

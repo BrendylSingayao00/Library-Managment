@@ -5,6 +5,8 @@ namespace App\Http\Controllers\App;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Subscription;
+
 
 
 class BookController extends Controller
@@ -43,6 +45,17 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        // Check if the user is subscribed or not
+        $isSubscribed = Subscription::where('user_id', auth()->id())->exists();
+
+        // Get the count of books
+        $bookCount = Book::where('user_id', auth()->id())->count();
+
+        // If the user is not subscribed and has 10 books, redirect them to subscribe
+        if (!$isSubscribed && $bookCount >= 1) {
+            return redirect()->route('subscription.index')->with('error', 'You have reached the maximum limit of 10 books. Please subscribe to add more.');
+        }
+
         $request->validate([
             'title' => 'required|string|max:255',
             'author' => 'required|string|max:255',
@@ -50,6 +63,7 @@ class BookController extends Controller
             'category' => 'required|string|max:255',
             'book_cover' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust image validation as per your requirements
             'quantity' => 'required|integer|min:1',
+
         ]);
 
         // Check if the book already exists
@@ -83,6 +97,7 @@ class BookController extends Controller
             'category' => $request->category,
             'book_cover' => 'uploads/' . $tenantFolder . '/' . $imageName ?? null, // Use null if no file uploaded
             'quantity' => $request->quantity,
+            'user_id' => auth()->id(),
         ]);
 
         return redirect()->route('books.index');

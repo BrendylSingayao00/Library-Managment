@@ -11,7 +11,9 @@ use App\Http\Controllers\App\{
     BookController,
     BorrowController,
     DashboardController,
+    SubscriptionController
 };
+
 
 
 
@@ -73,7 +75,8 @@ Route::middleware([
         Route::post('borrow/{borrow}/approve', [BorrowController::class, 'approve'])->name('borrow.approve');
         Route::post('borrow/{borrow}/complete', [BorrowController::class, 'complete'])->name('borrow.complete');
 
-
+        Route::post('/subscribe/update', [SubscriptionController::class, 'update'])->name('subscribe.update');
+        Route::get('/subscribe', [SubscriptionController::class, 'index'])->name('subscribe.index');
 
 
         Route::group(['middleware' => ['role:admin']], function () {
