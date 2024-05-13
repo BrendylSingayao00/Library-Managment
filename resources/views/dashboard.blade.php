@@ -11,18 +11,15 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>EduAcademia</title>
+        <title>EduAcademia | Dashboard</title>
 
-        <!-- Custom fonts for this template-->
-        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-        <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
+<!-- Custom fonts for this template-->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
 
-        <!-- Custom styles for this template-->
-        <link href="css/map.css" rel="stylesheet">
-        <link href="css/sb-admin-2.min.css" rel="stylesheet">
-        <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+<!-- Custom styles for this template-->
+<link href="css/map.css" rel="stylesheet">
+<link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     </head>
     <script>
@@ -63,6 +60,7 @@
     <body>
         <section class="dashboard">
             <div class="top">
+            <strong class="dashboard-title">Dashboard</strong>
                 <i class="uil uil-bars sidebar-toggle"></i>
                 <div class="search-box">
                     <i class="uil uil-search"></i>
@@ -72,29 +70,30 @@
             </div>
             <div class="dash-content">
                 <div class="overview">
-                    <div class="title">
-                        <i class="uil uil-tachometer-fast-alt"></i>
-                        <span class="text">Dashboard</span>
-                    </div>
+                    <!-- <div class="title">
+                        <span class="text"><strong>DASHBOARD</strong></span>
+                    </div> -->
                     <div class="boxes">
-                        <div class="box box1">
-                            <i class="uil uil-thumbs-up"></i>
-                            <span class="text">Total Likes</span>
-                            <span class="number">50,120</span>
-                        </div>
-                        <div class="box box2">
-                            <i class="uil uil-comments"></i>
-                            <span class="text">Comments</span>
-                            <span class="number">20,120</span>
-                        </div>
-                        <div class="box box3">
-                            <i class="uil uil-share"></i>
-                            <span class="text">Total Share</span>
-                            <span class="number">10,120</span>
-                        </div>
+    <div class="box box1" style="background-color: #40A2D8;">
+        <i class="uil uil-thumbs-up" style="color: #40A2D8;"></i>
+        <span class="text" style="color: #333;">Total Likes</span>
+        <span class="number" style="color: #333; font-weight: bold;">50,120</span>
+    </div>
+    <div class="box box2" style="background-color: #3468C0;">
+        <i class="uil uil-comments" style="color: #66ff66;"></i>
+        <span class="text" style="color: #333;">Comments</span>
+        <span class="number" style="color: #333; font-weight: bold;">20,120</span>
+    </div>
+    <div class="box box3" style="background-color: #FF9843;">
+        <i class="uil uil-share" style="color: #6666ff;"></i>
+        <span class="text" style="color: #333;">Total Share</span>
+        <span class="number" style="color: #333; font-weight: bold;">10,120</span>
+    </div>
+</div>
+
                     </div>
                 </div>
-                <div class="activity">
+                <!-- <div class="activity">
                     <div class="title">
                         <i class="uil uil-clock-three"></i>
                         <span class="text">Recent Activity</span>
@@ -152,7 +151,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </section>
 
     </body>

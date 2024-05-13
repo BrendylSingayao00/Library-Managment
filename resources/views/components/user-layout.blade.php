@@ -90,14 +90,15 @@
         @endrole
     </ul>
 
-            <ul class="logout-mode">
-            <li class="{{ request()->routeIs('app.profile.edit') ? 'active' : '' }}">
+                <ul class="logout-mode">
+                <li>
                     @role('admin')
                     <a href="{{ route('app.profile.edit') }}">
                         <i class="uil uil-signout"></i><span class="link-name">Profile</span>
                     </a>
                     @endrole
                 </li>
+
             
                 <li class="mode">
                     <a href="#">
@@ -162,7 +163,7 @@
         }
     });
     document.addEventListener("DOMContentLoaded", function() {
-    const menuItems = document.querySelectorAll(".menu-items .nav-links li:not(.mode):not(.logout-mode)");
+    const menuItems = document.querySelectorAll(".menu-items .nav-links li.menu-item:not(.profile-item):not(.logout-item)");
 
     // Function to set active state based on current page URL
     const setActiveMenuItem = () => {
@@ -194,6 +195,7 @@
         });
     });
 });
+
 
 
 function confirmLogout(event) {

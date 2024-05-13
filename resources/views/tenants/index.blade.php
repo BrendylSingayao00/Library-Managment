@@ -2,6 +2,7 @@
 
     <section class="dashboard">
         <div class="top">
+        <strong class="dashboard-title">TENANT</strong>
             <i class="uil uil-bars sidebar-toggle"></i>
             <div class="search-box">
                 <i class="uil uil-search"></i>
@@ -10,7 +11,7 @@
 
         </div>
         <div class="dash-content">
-            <x-btn-link class="ml-4 float-right flex" href="{{ route('tenants.create') }}">
+            <x-btn-link class="ml-4 float-right" href="{{ route('tenants.create') }}">
                 Add New Tenant</x-btn-link>
             <!-- <button type="button" class="btn btn-primary ml-4 mt-5 float-right " data-toggle="modal"
                 data-target="#exampleModal">
@@ -18,10 +19,10 @@
             </button> -->
 
             <div class="overview">
-                <div class="title">
+                <!-- <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">Tenant</span>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -31,15 +32,15 @@
 
             </div>
             <div class="activity-data">
-                <table class="data">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="px-6 py-3 data-title">Name</th>
-                            <th scope="col" class="px-6 py-3 data-title">Email</th>
-                            <th scope="col" class="px-6 py-3 data-title">Domain</th>
-                            <th scope="col" class="px-6 py-3 data-title">Action</th>
+            <div class="data">
+        <table class="user_table" style="table-layout: fixed; ">                    <thead>
+        <tr>
+    <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Name</th>
+    <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Email</th>
+    <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Domain</th>
+    <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Action</th>
+</tr>
 
-                        </tr>
                     </thead>
                     <tbody>
                         @foreach($tenants as $tenant)
@@ -142,4 +143,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+    
 </x-app-layout>
