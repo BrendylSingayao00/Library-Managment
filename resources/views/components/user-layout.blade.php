@@ -53,55 +53,52 @@
         <x-header />
         <div class="menu-items">
 
-            <ul class="nav-links">
-                <li><a href="{{ route('dashboard')}}">
-                        <i class="uil uil-estate"></i>
-                        <span class="link-name">Dashboard</span>
-                    </a></li>
-                @role('admin')
-                <li><a href="{{ route('users.index')}}">
-                        <i class="uil uil-files-landscapes"></i>
-                        <span class="link-name">Borrower</span>
-                    </a></li>
-
-
-
-                <li><a href="{{ route('borrow.borrowing') }}">
-                        <i class=" uil uil-files-landscapes"></i>
-                        <span class="link-name">Borrowing</span>
-                    </a></li>
-                @endrole
-
-                <li><a href="{{ route('books.index') }}">
-                        <i class=""></i>
-                        <span class="link-name">Books</span>
-                    </a></li>
-                @role('student')
-                <li><a href="{{ route('borrow.library') }}">
-                        <i class=""></i>
-                        <span class="link-name">My Library</span>
-                    </a></li>
-                @endrole
-            </ul>
+        <ul class="nav-links">
+        <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+            <a href="{{ route('dashboard') }}">
+                <i class="uil uil-estate"></i>
+                <span class="link-name">Dashboard</span>
+            </a>
+        </li>
+        @role('admin')
+        <li class="{{ request()->routeIs('users.*') ? 'active' : '' }}">
+            <a href="{{ route('users.index') }}">
+                <i class="uil uil-files-landscapes"></i>
+                <span class="link-name">Borrower</span>
+            </a>
+        </li>
+        <li class="{{ request()->routeIs('borrow.*') ? 'active' : '' }}">
+            <a href="{{ route('borrow.borrowing') }}">
+                <i class=" uil uil-files-landscapes"></i>
+                <span class="link-name">Borrowing</span>
+            </a>
+        </li>
+        @endrole
+        <li class="{{ request()->routeIs('books.*') ? 'active' : '' }}">
+            <a href="{{ route('books.index') }}">
+                <i class=""></i>
+                <span class="link-name">Books</span>
+            </a>
+        </li>
+        @role('student')
+        <li class="{{ request()->routeIs('borrow.library') ? 'active' : '' }}">
+            <a href="{{ route('borrow.library') }}">
+                <i class=""></i>
+                <span class="link-name">My Library</span>
+            </a>
+        </li>
+        @endrole
+    </ul>
 
             <ul class="logout-mode">
-                <li>
+            <li class="{{ request()->routeIs('app.profile.edit') ? 'active' : '' }}">
                     @role('admin')
                     <a href="{{ route('app.profile.edit') }}">
                         <i class="uil uil-signout"></i><span class="link-name">Profile</span>
                     </a>
                     @endrole
                 </li>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <li><a href="route('logout')" onclick="event.preventDefault();
-                                          this.closest('form').submit();">
-                            <i class="uil uil-signout"></i>
-                            <span class="link-name">Logout</span>
-
-                    </li>
-                </form>
-
+            
                 <li class="mode">
                     <a href="#">
                         <i class="uil uil-moon"></i>
@@ -111,6 +108,17 @@
                         <span class="switch"></span>
                     </div>
                 </li>
+
+                <form id="logoutForm" method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <li>
+                        <a href="#" onclick="confirmLogout(event)">
+                            <i class="uil uil-signout"></i>
+                            <span class="link-name">Logout</span>
+                        </a>
+                    </li>
+                </form>
+
             </ul>
         </div>
     </nav>
@@ -152,7 +160,49 @@
         } else {
             localStorage.setItem("status", "open");
         }
-    })
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+    const menuItems = document.querySelectorAll(".menu-items .nav-links li:not(.mode):not(.logout-mode)");
+
+    // Function to set active state based on current page URL
+    const setActiveMenuItem = () => {
+        const currentPath = window.location.pathname;
+        menuItems.forEach(item => {
+            const href = item.querySelector("a").getAttribute("href");
+            console.log("Current Path:", currentPath);
+            console.log("Href:", href);
+            if (currentPath === href) {
+                item.classList.add("active");
+            } else {
+                item.classList.remove("active");
+            }
+        });
+    };
+
+    // Set initial active menu item
+    setActiveMenuItem();
+
+    menuItems.forEach(item => {
+        item.addEventListener("click", function(event) {
+            // Remove active class from all menu items
+            menuItems.forEach(item => {
+                item.classList.remove("active");
+            });
+
+            // Add active class to the clicked menu item
+            this.classList.add("active");
+        });
+    });
+});
+
+
+function confirmLogout(event) {
+        event.preventDefault();
+        if (confirm("Are you sure you want to logout?")) {
+            document.getElementById('logoutForm').submit(); // Submit the form
+        }
+    }
+
 </script>
 
 </html>

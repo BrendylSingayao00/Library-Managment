@@ -23,10 +23,10 @@
                 <span class="text">BOOKS</span>
             </div> -->
             @role('admin')
-            <div class="new-book">
-                <x-btn-link class="ml-10 float-right" href="{{ route('books.create') }}">
-                    Add Book</x-btn-link>
+            <div class="new-book" style="display: flex; margin-left: 86.5%; margin-bottom: 10px;">
+                <x-btn-link href="{{ route('books.create') }}">Add Book</x-btn-link>
             </div>
+
             @endrole
             <div>
 
@@ -72,29 +72,29 @@
 
     @foreach($books as $book)
     <!-- Detail Modal -->
+    <div class="overlay"></div>
     <div id="bookDetailsModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="bookDetailsContent">
-
                 <h4>{{ $book->title }}</h4>
                 <p>{{ $book->description }}</p>
             </div>
 
             @role('admin')
-            <div style="display: inline;">
-                <form action="{{ route('books.edit', $book->id) }}" method="get">
-                    @csrf
-                    <button type="submit" class="btn btn-success">Edit</button>
-                </form>
-                <form action="{{ route('books.destroy', $book->id) }}" method="post" id="deleteForm">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger"
-                        onclick="return confirm('Are you sure you want to delete this book?')">Delete</button>
-                </form>
-            </div>
-            @endrole
+<div style="display: flex; justify-content: flex-end;">
+    <form action="{{ route('books.edit', $book->id) }}" method="get" style="margin-left: 5px;">
+        @csrf
+        <button type="submit" class="btn btn-success">Edit</button>
+    </form>
+    <form action="{{ route('books.destroy', $book->id) }}" method="post" id="deleteForm">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger"
+            onclick="return confirm('Are you sure you want to delete this book?')">Delete</button>
+    </form>
+</div>
+@endrole
             @role('student')
             <form action="{{ route('books.borrow', $book->id) }}" method="get">
                 @csrf

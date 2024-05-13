@@ -1,4 +1,13 @@
-<x-tenant-app-layout>
+<x-user-layout>
+<div class="top">
+        <!-- <i class="uil uil-bars sidebar-toggle"></i> -->
+        <!-- <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here...">
+        </div> -->
+        <strong class="borrower-title">PROFILE</strong>
+
+    </div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
@@ -26,4 +35,4 @@
             </div>
         </div>
     </div>
-</x-tenant-app-layout>
+</x-user-layout>

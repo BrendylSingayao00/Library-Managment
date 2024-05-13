@@ -140,7 +140,8 @@ nav .menu-items {
     position: relative;
 }
 
-.nav-links li a:hover:before {
+.nav-links li a:hover:before,
+.nav-links li a:active:before {
     content: "";
     position: absolute;
     left: -7px;
@@ -149,6 +150,7 @@ nav .menu-items {
     border-radius: 50%;
     background-color: var(--primary-color);
 }
+
 
 body.dark li a:hover:before {
     background-color: var(--text-color);
@@ -165,14 +167,14 @@ body.dark li a:hover:before {
 }
 
 .menu-items li a .link-name {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
     color: var(--black-light-color);
     transition: var(--tran-05);
 }
 
 nav.close li a .link-name {
-    opacity: 0;
+    opacity: 10;
     pointer-events: none;
 }
 
@@ -628,5 +630,19 @@ label[for="bookCover"] {
     border-radius: 4px;
     cursor: pointer;
 }
+
+.nav-links li.active,
+.logout-mode li.active {
+    background-color: #f8f9fc; /* Background color when active */
+    border-left: 4px solid #4e73df; /* Left border color when active */
+}
+
+/* Style for active link text */
+.nav-links li.active a,
+.logout-mode li.active a {
+    color: #4e73df; /* Text color when active */
+}
+
+
 
 

@@ -28,7 +28,7 @@
                          </select>
                     </div> -->
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex items-center justify-end mt-2">
             <x-primary-button class="ms-4">
                 {{ __('Update') }}
             </x-primary-button>
