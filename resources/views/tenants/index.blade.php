@@ -1,8 +1,8 @@
 <x-app-layout>
 
-    <section class="dashboard">
+    <section class="dashboard" style="overflow: hidden;">
         <div class="top">
-        <strong class="dashboard-title">TENANT</strong>
+            <strong class="dashboard-title">TENANT</strong>
             <i class="uil uil-bars sidebar-toggle"></i>
             <div class="search-box">
                 <i class="uil uil-search"></i>
@@ -11,70 +11,64 @@
 
         </div>
         <div class="dash-content">
-            <x-btn-link class="ml-4 float-right" href="{{ route('tenants.create') }}">
+            <x-btn-link class="ml-4 float-right btn-tenant" href="{{ route('tenants.create') }}">
                 Add New Tenant</x-btn-link>
             <!-- <button type="button" class="btn btn-primary ml-4 mt-5 float-right " data-toggle="modal"
                 data-target="#exampleModal">
                 Add New Tenant
             </button> -->
 
-            <div class="overview">
-                <!-- <div class="title">
-                    <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Tenant</span>
-                </div> -->
-            </div>
         </div>
 
 
-        <div class="activity">
-            <div class="title">
+        <div class="activity" style="overflow: hidden;">
 
+            <div class="activity-data tenant-table">
+                <div class="data">
+                    <table class="user_table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Name</th>
+                                <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Email</th>
+                                <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Domain</th>
+                                <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Action</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @foreach($tenants as $tenant)
+                            <tr>
+                                <td scope="col" class="px-6 py-3 data-list">{{$tenant->name}}</td>
+                                <td scope="col" class="px-6 py-3 data-list">{{$tenant->email}}</td>
+                                <td scope="col" class="px-6 py-3 data-list">
+                                    @foreach($tenant->domains as $domain)
+                                    {{ $domain->domain }}{{ $loop->last ? '' : ',' }}
+                                    @endforeach
+                                </td>
+                                <td method="post" scope="col" class="px-6 py-3 data-list" style="display: flex;">
+
+                                    <form action="{{ route('tenants.destroy', $tenant->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-danger btn-sm" value="Delete" />
+                                    </form>
+                                    &nbsp;
+                                    <form action="{{ route('tenants.edit', $tenant->id) }}" method="get">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success">Edit</button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
-            <div class="activity-data">
-            <div class="data">
-        <table class="user_table" style="table-layout: fixed; ">                    <thead>
-        <tr>
-    <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Name</th>
-    <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Email</th>
-    <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Domain</th>
-    <th scope="col" class="px-6 py-3 data-title" style="text-align: center;">Action</th>
-</tr>
-
-                    </thead>
-                    <tbody>
-                        @foreach($tenants as $tenant)
-                        <tr>
-                            <td scope="col" class="px-6 py-3 data-list">{{$tenant->name}}</td>
-                            <td scope="col" class="px-6 py-3 data-list">{{$tenant->email}}</td>
-                            <td scope="col" class="px-6 py-3 data-list">
-                                @foreach($tenant->domains as $domain)
-                                {{ $domain->domain }}{{ $loop->last ? '' : ',' }}
-                                @endforeach
-                            </td>
-                            <td method="post" scope="col" class="px-6 py-3 data-list" style="display: inline;">
-                                <form action="{{ route('tenants.destroy', $tenant->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" class="btn btn-danger btn-sm" value="Delete" />
-                                </form>
-
-                                <form action="{{ route('tenants.edit', $tenant->id) }}" method="get">
-                                    @csrf
-                                    <button type="submit">Edit</button>
-                                </form>
-                                <button>view</button>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-
-            </div>
-        </div>
 
 
-        <!-- <form method="POST" action="{{ route('tenants.store') }}" enctype="multipart/form-data">
+            <!-- <form method="POST" action="{{ route('tenants.store') }}" enctype="multipart/form-data">
             @csrf
 
             <div>
@@ -129,19 +123,39 @@
                     </x-primary-button>
                 </div>
         </form> -->
+        </div>
     </section>
 
 
     <!-- Stylesheets -->
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
-    
+    <style>
+        .dashboard {
+            overflow: hidden;
+            height: 200px;
+
+        }
+
+        .dash-content {
+            margin-top: 80px;
+        }
+
+        .btn-tenant {
+            margin-top: -30px;
+        }
+
+        .tenant-table {
+            width: 700px;
+        }
+
+        .activity {
+            height: 300px;
+        }
+    </style>
 </x-app-layout>

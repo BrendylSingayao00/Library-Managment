@@ -111,11 +111,11 @@
     margin: 5px;
 }
 
-#row-1,
+/* #row-1,
 #row-2,
 #header-row {
     display: flex;
-}
+} */
 
 #author-label {
     margin-left: 400px;
@@ -194,11 +194,14 @@ h1 {
 /* Modal Content/Box */
 .modal-content {
     background-color: #ffffff;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
+    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.5); /* Shadow */
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.5);
+    /* Shadow */
 }
 
 /* Close Button */
@@ -224,14 +227,15 @@ h1 {
 .search-bar {
     margin-top: -20px;
 }
+
 /* Header styles */
-.header {
+/* .header {
     background-color: #333;
     color: #fff;
     padding: 10px;
     display: flex;
     align-items: center;
-}
+} */
 
 .title {
     margin: 0;
@@ -243,7 +247,8 @@ h1 {
     display: flex;
     align-items: center;
     left: 600px;
-    width: 300px; /* Adjust the width as needed */
+    width: 300px;
+    /* Adjust the width as needed */
     height: 50px;
 }
 
@@ -267,15 +272,18 @@ h1 {
 .search-button:hover {
     background-color: #45a049;
 }
+
 /* CSS */
 .btn-link {
-    padding: 8px 12px; /* Adjust padding as needed */
+    padding: 8px 12px;
+    /* Adjust padding as needed */
     background-color: transparent;
     border: none;
     cursor: pointer;
     text-decoration: none;
     color: inherit;
-    float: left; /* Align button to the left */
+    float: left;
+    /* Align button to the left */
 }
 
 .btn-link:hover {
@@ -286,27 +294,30 @@ h1 {
     margin: 0;
     font-size: 24px;
     color: #333;
-    margin-right: auto; /* Pushes the title to the left */
+    margin-right: auto;
+    /* Pushes the title to the left */
 }
 
 .top {
     display: flex;
     align-items: center;
     padding: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .new-book {
-    display: flex; /* Use flexbox to align items */
-    align-items: center; /* Center items vertically */
+    display: flex;
+    /* Use flexbox to align items */
+    align-items: center;
+    /* Center items vertically */
 }
 
 .new-book .ml-10 {
-    margin-left: 0 !important; /* Remove left margin */
+    margin-left: 0 !important;
+    /* Remove left margin */
 }
 
 .new-book .float-right {
-    margin-right: -50px; /* Move the "Add Book" link to the left */
+    margin-right: -50px;
+    /* Move the "Add Book" link to the left */
 }
-
-

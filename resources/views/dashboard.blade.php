@@ -13,54 +13,59 @@
 
         <title>EduAcademia | Dashboard</title>
 
-<!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-<!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
+        <!-- Custom fonts for this template-->
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
 
-<!-- Custom styles for this template-->
-<link href="css/map.css" rel="stylesheet">
-<link href="css/sb-admin-2.min.css" rel="stylesheet">
+        <!-- Custom styles for this template-->
+        <link href="css/map.css" rel="stylesheet">
+        <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
     </head>
     <script>
-    const body = document.querySelector("body"),
-        modeToggle = body.querySelector(".mode-toggle");
-    sidebar = body.querySelector("nav");
-    sidebarToggle = body.querySelector(".sidebar-toggle");
+        const body = document.querySelector("body"),
+            modeToggle = body.querySelector(".mode-toggle");
+        sidebar = body.querySelector("nav");
+        sidebarToggle = body.querySelector(".sidebar-toggle");
 
-    let getMode = localStorage.getItem("mode");
-    if (getMode && getMode === "dark") {
-        body.classList.toggle("dark");
-    }
-
-    let getStatus = localStorage.getItem("status");
-    if (getStatus && getStatus === "close") {
-        sidebar.classList.toggle("close");
-    }
-
-    modeToggle.addEventListener("click", () => {
-        body.classList.toggle("dark");
-        if (body.classList.contains("dark")) {
-            localStorage.setItem("mode", "dark");
-        } else {
-            localStorage.setItem("mode", "light");
+        let getMode = localStorage.getItem("mode");
+        if (getMode && getMode === "dark") {
+            body.classList.toggle("dark");
         }
-    });
 
-    sidebarToggle.addEventListener("click", () => {
-        sidebar.classList.toggle("close");
-        if (sidebar.classList.contains("close")) {
-            localStorage.setItem("status", "close");
-        } else {
-            localStorage.setItem("status", "open");
+        let getStatus = localStorage.getItem("status");
+        if (getStatus && getStatus === "close") {
+            sidebar.classList.toggle("close");
         }
-    })
+
+        modeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark");
+            if (body.classList.contains("dark")) {
+                localStorage.setItem("mode", "dark");
+            } else {
+                localStorage.setItem("mode", "light");
+            }
+        });
+
+        sidebarToggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+            if (sidebar.classList.contains("close")) {
+                localStorage.setItem("status", "close");
+            } else {
+                localStorage.setItem("status", "open");
+            }
+        })
     </script>
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
 
     <body>
         <section class="dashboard">
             <div class="top">
-            <strong class="dashboard-title">Dashboard</strong>
+                <strong class="dashboard-title">Dashboard</strong>
                 <i class="uil uil-bars sidebar-toggle"></i>
                 <div class="search-box">
                     <i class="uil uil-search"></i>
@@ -74,26 +79,26 @@
                         <span class="text"><strong>DASHBOARD</strong></span>
                     </div> -->
                     <div class="boxes">
-    <div class="box box1" style="background-color: #40A2D8;">
-        <i class="uil uil-thumbs-up" style="color: #40A2D8;"></i>
-        <span class="text" style="color: #333;">Total Likes</span>
-        <span class="number" style="color: #333; font-weight: bold;">50,120</span>
-    </div>
-    <div class="box box2" style="background-color: #3468C0;">
-        <i class="uil uil-comments" style="color: #66ff66;"></i>
-        <span class="text" style="color: #333;">Comments</span>
-        <span class="number" style="color: #333; font-weight: bold;">20,120</span>
-    </div>
-    <div class="box box3" style="background-color: #FF9843;">
-        <i class="uil uil-share" style="color: #6666ff;"></i>
-        <span class="text" style="color: #333;">Total Share</span>
-        <span class="number" style="color: #333; font-weight: bold;">10,120</span>
-    </div>
-</div>
-
+                        <div class="box box1" style="background-color: #40A2D8;">
+                            <i class="uil uil-thumbs-up" style="color: #40A2D8;"></i>
+                            <span class="text" style="color: #333;">Total Likes</span>
+                            <span class="number" style="color: #333; font-weight: bold;">0</span>
+                        </div>
+                        <div class="box box2" style="background-color: #3468C0;">
+                            <i class="uil uil-comments" style="color: #66ff66;"></i>
+                            <span class="text" style="color: #333;">Comments</span>
+                            <span class="number" style="color: #333; font-weight: bold;">0</span>
+                        </div>
+                        <div class="box box3" style="background-color: #FF9843;">
+                            <i class="uil uil-share" style="color: #6666ff;"></i>
+                            <span class="text" style="color: #333;">Total Share</span>
+                            <span class="number" style="color: #333; font-weight: bold;">0</span>
+                        </div>
                     </div>
+
                 </div>
-                <!-- <div class="activity">
+            </div>
+            <!-- <div class="activity">
                     <div class="title">
                         <i class="uil uil-clock-three"></i>
                         <span class="text">Recent Activity</span>

@@ -3,7 +3,7 @@
 
     <div class="alert alert-warning" role="alert">
 
-        You have reached the maximum limit of 10 books. Please <a href="{{ route('subscription.index') }}">subscribe</a>
+        You have reached the maximum limit of 10 books. Please <a href="{{ route('subscribe.index') }}">subscribe</a>
 
         to add more.
 
@@ -31,8 +31,7 @@
 
             <label for="description">Description</label>
             <div id="row-2">
-                <textarea id="description" class="form-control" placeholder="Description.." style="height:180px"
-                    name="description" required></textarea>
+                <textarea id="description" class="form-control" placeholder="Description.." style="height:180px" name="description" required></textarea>
                 <ul>
                     <label for="book_id">Book Cover</label>
                     <input type="file" class="form-control" id="bookCover" name="book_cover" required>
@@ -57,8 +56,7 @@
             </div>
 
             <div id="row-3" class="d-flex justify-content-between">
-                <input type="submit" value="ADD BOOK" class="btn btn-success flex-grow-1 me-1" id="add-btn"
-                    name="submit">
+                <input type="submit" value="ADD BOOK" class="btn btn-success flex-grow-1 me-1" id="add-btn" name="submit">
                 <a href="{{ route('books.index') }}" class="btn btn-secondary flex-grow-1 ms-1">CANCEL</a>
             </div>
         </form>

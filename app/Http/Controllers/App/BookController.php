@@ -53,7 +53,7 @@ class BookController extends Controller
 
         // If the user is not subscribed and has 10 books, redirect them to subscribe
         if (!$isSubscribed && $bookCount >= 1) {
-            return redirect()->route('subscription.index')->with('error', 'You have reached the maximum limit of 10 books. Please subscribe to add more.');
+            return redirect()->route('subscribe.index')->with('error', 'You have reached the maximum limit of 10 books. Please subscribe to add more.');
         }
 
         $request->validate([

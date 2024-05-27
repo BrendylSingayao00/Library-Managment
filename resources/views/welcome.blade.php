@@ -46,12 +46,7 @@
                             class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
                             in</a>
                     </li>
-                    <li class="nav_menu_item">
-                        <a href="#" class="nav_menu_link">service</a>
-                    </li>
-                    <li class="nav_menu_item">
-                        <a href="#" class="nav_menu_link">contact</a>
-                    </li>
+
                 </ul>
             </div>
 
@@ -66,13 +61,16 @@
             <div class="grid-cols-2">
                 <div class="grid-item-1">
                     <h1 class="main-heading">
-                        Welcome to <span>Devkit.</span>
-                        <br />
-                        Develop anything.
+                        Welcome to <span><strong>EduAcademia</strong> </span>
+
+                        <!-- <br />
+                        Develop anything. -->
                     </h1>
+                    <p>your gateway to limitless learning!</p>
                     <p class="info-text">
-                        Build a beautiful, modern website with flexible components built
-                        from scratch.
+                        Explore our extensive online library, personalized recommendations, and collaborative
+                        spaces designed to empower educators and inspire learners.
+                        Join us today and unlock your journey toward education.
                     </p>
 
                     <div class="btn_wrapper">
@@ -82,7 +80,6 @@
                                 in</a>
                         </button>
 
-                        <button class="btn documentation_btn">documentation</button>
                     </div>
                 </div>
                 <div class="grid-item-2">
